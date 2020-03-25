@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Grid } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 
@@ -91,6 +91,14 @@ const datatableData = [
 ];
 
 export default function Tables() {
+
+  useEffect(() => {
+    console.log('Use Effect Changes');
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+  });
   return (
     <>
       <PageTitle title="Items" />
@@ -106,9 +114,13 @@ export default function Tables() {
                   item.price,
                   item.sellerName,
                   item.soloPrice,
+                  item.groupPrice,
+                  item.price,
+                  item.category,
+                  item.itemCondition,
               ]
           })}
-            columns={["id", "price", "sellerName", "soloPrice"]}
+            columns={["id", "price", "sellerName", "soloPrice", "Group Price", "Price", "category", "Item Condition"]}
             options={{
               filterType: "checkbox",
             }}
