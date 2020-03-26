@@ -4,8 +4,7 @@ import MUIDataTable from "mui-datatables";
 import { API_URL } from "../../Services"
 // components
 import PageTitle from "../../components/PageTitle";  
-
-// const datatableData = [];
+import AddEditItem from "./components/AddEditItem";
 
 
 export default function Tables() {
@@ -31,7 +30,8 @@ export default function Tables() {
   return (
     <>
       <PageTitle title="Items" />
-      <Grid container spacing={4}>  
+      <Grid container spacing={4}> 
+        <AddEditItem /> 
         <Grid item xs={12}>
         {isLoading ? (
         <h1>Loading ...</h1>
