@@ -84,7 +84,7 @@ export default function Tables() {
         <TableCell>4</TableCell>
         <TableCell>GOOD</TableCell>
         <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={iicccoonn} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
+        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
         </TableRow>
 {/* tabel body repaet row */}
 
