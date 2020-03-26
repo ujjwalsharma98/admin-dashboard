@@ -13,6 +13,7 @@ import useStyles from "./styles";
 // components
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import ChildSidebar from '../ChildSideBar'
 
 // pages
 import Dashboard from "../../pages/dashboard"; 
@@ -33,6 +34,7 @@ function Layout(props) {
         <>
           <Header history={props.history} />
           <Sidebar />
+          <ChildSidebar/>
           <div
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,
