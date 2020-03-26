@@ -24,24 +24,42 @@ import Charts from "../../pages/charts";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
-const Button = Styled.div`
-    background-color: pink;
-    border-radius: 10px;
-    height: 20px;
-    position: relative;
-    left: -1%;
-    top: 80px;
+const ButtonOne = Styled.div`
+  background-color: pink;
+  border-radius: 10px;
+  height: 20px;
+  position: relative;
+  left: -1%;
+  top: 80px;
+`
+
+const ButtonTwo = Styled.div`
+  background-color: pink;
+  border-radius: 10px;
+  height: 20px;
+  position: relative;
+  left: -1%;
+  top: 80px;
 `
 
 function Layout(props) {
   var classes = useStyles();
-  const [showSidebar, setSidebar] = useState(true);
+  const [showSidebarOne, setSidebarOne] = useState(true);
+  const [showSidebarTwo, setSidebarTwo] = useState(true);
 
-  const SidebarView = () => {
-    if(showSidebar){
-      setSidebar(false)
+  const SidebarViewOne = () => {
+    if(showSidebarOne){
+      setSidebarOne(false)
     }else{
-      setSidebar(true)
+      setSidebarOne(true)
+    }
+  }
+
+  const SidebarViewTwo = () => {
+    if(showSidebarTwo){
+      setSidebarTwo(false)
+    }else{
+      setSidebarTwo(true)
     }
   }
 
@@ -52,13 +70,19 @@ function Layout(props) {
     <div className={classes.root}>
         <>
           <Header history={props.history} />
-          <Sidebar />
-          {showSidebar ? <ChildSidebar/> : ''}
-          <Button onClick={() => {
-            SidebarView()
+          {showSidebarOne ? <Sidebar/> : ''}
+          <ButtonOne onClick={() => {
+            SidebarViewOne()
           }}
           >Click
-          </Button>
+          </ButtonOne>
+
+          {showSidebarTwo ? <ChildSidebar/> : ''}
+          <ButtonTwo onClick={() => {
+            SidebarViewTwo()
+          }}
+          >Click
+          </ButtonTwo>
           <div
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,
