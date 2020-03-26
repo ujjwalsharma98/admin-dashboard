@@ -1,0 +1,76 @@
+body{
+    background-color: #ffffff!important;
+}
+
+.menuBar {
+    background-color: #f4f5f7!important;
+    box-shadow: none!important;
+}
+.menuLogo {
+    width: 150px;
+    max-width: 100%;
+    padding-left: 47px;
+}
+
+.main_heading{
+  color: #58595b!important;
+  font-weight: 600!important;
+  font-size: 24px!important;
+}
+
+/* tabel data ui css */
+.tabelContainer {
+    padding: 5px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+}
+
+.tabelHead_row th  {
+    background-color: #f4f5f7;
+    border-right: 2px solid white;
+    border-bottom: none;
+}
+.tabelHead_row th:last-child  {
+    border-right: none;
+}
+
+.tabelHead_row th span{
+    color: #58595b;
+    font-weight: 600;
+}
+
+.success_btn {
+    border-color: #3dd39d!important;
+    color: #3dd39d!important;
+    border-radius: 20px!important;
+}
+
+.pending_btn {
+    border-color: #ff9018!important;
+    color: #ff9018!important;
+    border-radius: 20px!important;
+}
+
+.tabelBody_row  {
+    border-bottom: 2px solid #F4F5F7;
+    
+}
+.tabelBody_row:last-child {
+    border-bottom:none;    
+}
+.tabelBody_row  td{
+    border-bottom: none; 
+    font-weight: 500; 
+    color: #555555;  
+}
+.actionIcon {
+    width: 25px;
+    max-width: 100%;
+}
+
+.seach_btn{
+    border: 1px solid #555555!important;
+    padding: 3px 10px!important;
+    border-radius: 20px;
+
+}
