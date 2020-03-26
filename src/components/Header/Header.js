@@ -26,6 +26,7 @@ import useStyles from "./styles";
 import { Badge, Typography } from "../Wrappers/Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import logo from './kite_logo.png'; // with import
 
 // context
 import {
@@ -105,9 +106,10 @@ export default function Header(props) {
   var [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
+    <AppBar position="fixed" className={classes.appBar+ " menuBar"}>
       <Toolbar className={classes.toolbar}>
-        <IconButton
+      <img src={logo} alt="logo" className="menuLogo"  />
+        {/* <IconButton
           color="inherit"
           onClick={() => toggleSidebar(layoutDispatch)}
           className={classNames(
@@ -135,7 +137,7 @@ export default function Header(props) {
             />
           )}
         </IconButton>
-        <Typography variant="h6" weight="medium" className={classes.logotype}>
+        <Typography variant="h6" weight="medium" className="logotype">
             KitaBeli
         </Typography>
         <div className={classes.grow} />
@@ -332,6 +334,12 @@ export default function Header(props) {
             </Typography>
           </div>
         </Menu>
+      
+       */}
+      
+
+      
+      
       </Toolbar>
     </AppBar>
   );
