@@ -23,8 +23,7 @@ import {
 const ChildSidebar = props => {
     return(
         <div className="sidebar_two">
-<MenuList className="sidebar_two_menu">
-
+        <MenuList className="sidebar_two_menu">
         <MenuItem className="Side_MenuList"  > <img src={OrderImg} alt="sidebar icon" className="side_img"/>Order</MenuItem>
         <MenuItem className="Side_MenuList" ><img src={ItemImg} alt="sidebar icon" className="side_img"/>Items</MenuItem>
         <MenuItem   className="Side_MenuList" > <img src={UserImg} alt="sidebar icon" className="side_img"/>Users</MenuItem>
