@@ -143,28 +143,46 @@ body{
 }
 
 .login_logo {
-    width: 300px;
+    width: 250px;
 }
 .signin_text {
-    font-size: 60px!important;
-    color: rgb(88, 89, 91)important;
-    text-transform: uppercaseimportant;
-    line-height: 1.2important;
-    margin-bottom: 25px;
-    font-weight: 600!important;
+    font-size: 40px!important;
+    color: rgb(88, 89, 91)!important;
+    text-transform: uppercase!important;
+    line-height: 1.2!important;
+    margin-bottom: 25px!important;
+    font-weight: 400!important;
     text-align: center;
 }
 .signin_des{
-    margin-bottom: 25px!important;
-    text-align: centerimportant;
-    font-weight: 500important;
-    font-size: 16pximportant;
+    margin-bottom: 40px!important;
+    text-align: center!important;
+    font-weight: 600!important;
+    font-size: 13px!important;
+    text-transform: uppercase!important;
+    color: rgb(88, 89, 91)!important;
+    
+}
+.sign_btn_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
 }
 .signin_btn{
   background-color: #58595b!important;
-  border-radius: 20px!important;
-  font-weight: 600;
+  border-radius: 50px!important;
+  font-weight: 500!important;
   color: white!important;
+  font-size: 21px!important;
+  font-weight: 500!important;
+  letter-spacing: 1px!important;
+
+  
+  width: 75%;
+}
+.sign_arrow{
+    margin-left: 10px;
 }
 .password_field , .email_field {
     display: flex;

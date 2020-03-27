@@ -94,7 +94,7 @@ function Layout(props) {
             SidebarViewTwo()
           }}
           >
-            <ArrowForwardIosIcon className="sidebar_arrow"></ArrowForwardIosIcon>
+            <ArrowForwardIosIcon className="sidebar_arrow "></ArrowForwardIosIcon>
           
           </IconButton>
           <div

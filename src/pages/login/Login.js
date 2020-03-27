@@ -90,6 +90,7 @@ function Login(props) {
                 style={{margin:'0'}}
                
                 fullWidth /> </div>
+                <div className="sign_btn_box">
                 <IconButton  onClick={() =>
                       loginUser(
                         userDispatch,
@@ -100,8 +101,10 @@ function Login(props) {
                         setError,
                       )
                     }  className="signin_btn">
-                  Sign in <ArrowForwardIcon/>
+                  Sign in <ArrowForwardIcon className="sign_arrow"/>
                 </IconButton>
+                </div>
+                
        
               
 
