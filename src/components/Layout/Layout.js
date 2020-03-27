@@ -11,7 +11,8 @@ import {
   Fab,
   Grid,
 } from "@material-ui/core";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowForward from '@material-ui/icons/ArrowForwardIos';
+import ArrowBack from '@material-ui/icons/ArrowBackIos';
 import {
   Route,
   Switch,
@@ -39,36 +40,16 @@ import Charts from "../../pages/charts";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
-// const ButtonOne = Styled.div`
-//   background-color: pink;
-//   border-radius: 10px;
-//   height: 20px;
-//   position: relative;
-//   left: -1%;
-//   top: 80px;
-// `
-
-// const ButtonTwo = Styled.div`
-//   background-color: pink;
-//   border-radius: 10px;
-//   height: 20px;
-//   position: relative;
-//   left: -1%;
-//   top: 80px;
-// `
+const Bar = Styled.div`
+  width: 20px;
+  background-color: #ffe77b;
+`
 
 function Layout(props) {
+  // global
+  var layoutState = useLayoutState();
   var classes = useStyles();
-  const [showSidebarOne, setSidebarOne] = useState(true);
   const [showSidebarTwo, setSidebarTwo] = useState(true);
-
-  const SidebarViewOne = () => {
-    if(showSidebarOne){
-      setSidebarOne(false)
-    }else{
-      setSidebarOne(true)
-    }
-  }
 
   const SidebarViewTwo = () => {
     if(showSidebarTwo){
@@ -78,23 +59,18 @@ function Layout(props) {
     }
   }
 
-  // global
-  var layoutState = useLayoutState();
-
   return (
     <div className={classes.root}>
         <>
           <Header history={props.history} />
-          {/* {showSidebarOne ? <Sidebar/> : ''} */}
-          
           <ParentSidebar/>
-          {showSidebarTwo ? <ChildSidebar/> : ''}
-          
+          {showSidebarTwo ? <ChildSidebar/> : <Bar/>}
           <IconButton className="toogle_btn" onClick={() => {
             SidebarViewTwo()
           }}
           >
-            <ArrowForwardIosIcon className="sidebar_arrow"></ArrowForwardIosIcon>
+
+          {showSidebarTwo === false ? <ArrowForward className="sidebar_arrow"></ArrowForward> : <ArrowBack className="sidebar_arrow"></ArrowBack>}
           
           </IconButton>
           <div
