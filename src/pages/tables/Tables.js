@@ -54,205 +54,42 @@ export default function Tables() {
         {isLoading ? (
         <h1>Loading ...</h1>
       ) : (
-<TableContainer className="tabelContainer" >
-            <Table className="tabel">
-      <TableHead >
-      <TableRow className="tabelHead_row">
-      <TableCell><span>Id</span></TableCell>
-        <TableCell><span>Name</span></TableCell>
-        <TableCell><span>Seller Name</span></TableCell>
-        <TableCell><span>Category</span></TableCell>
-        <TableCell><span>Description</span></TableCell>
-        <TableCell><span>Quantity</span></TableCell>
-        <TableCell><span>Price</span></TableCell>
-        <TableCell><span>Rating</span></TableCell>
-        <TableCell><span>Condition</span></TableCell>
-        <TableCell><span>Transction</span></TableCell>
-        <TableCell><span>Actions</span></TableCell>
-        </TableRow>
-        </TableHead>
-        <TableBody className="tabelBody">
-          {/* tabbel body row */}
-          <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-{/* tabel body repaet row */}
-
-<TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow><TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow><TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow><TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow><TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="pending_btn" >Pending</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-        <TableRow className="tabelBody_row" >
-        <TableCell>2235578</TableCell>
-        <TableCell>ABCD</TableCell>
-        <TableCell>Benjamin</TableCell>
-        <TableCell>Health</TableCell>
-        <TableCell><a href="#">See more</a></TableCell>
-        <TableCell>5</TableCell>
-        <TableCell>500</TableCell>
-        <TableCell>4</TableCell>
-        <TableCell>GOOD</TableCell>
-        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-        </TableRow>
-
-
-{/* tabel body repaet row   end */}
-
-
-        </TableBody>       
-        </Table>
+        <TableContainer className="tabelContainer" >
+          <Table className="tabel">
+            <TableHead >
+              <TableRow className="tabelHead_row">
+                <TableCell><span>Id</span></TableCell>
+                <TableCell><span>Name</span></TableCell>
+                <TableCell><span>Seller Name</span></TableCell>
+                <TableCell><span>Category</span></TableCell>
+                <TableCell><span>Description</span></TableCell>
+                <TableCell><span>Quantity</span></TableCell>
+                <TableCell><span>Price</span></TableCell>
+                <TableCell><span>Rating</span></TableCell>
+                <TableCell><span>Condition</span></TableCell>
+                <TableCell><span>Transction</span></TableCell>
+                <TableCell><span>Actions</span></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody className="tabelBody">
+              {datatableData.map((element) => (
+                <TableRow className="tabelBody_row" >
+                  <TableCell>{element.id}</TableCell>
+                  <TableCell>{element.name}</TableCell>
+                  <TableCell>{element.sellerName}</TableCell>
+                  <TableCell>{element.category}</TableCell>
+                  <TableCell><a href="#">See more</a></TableCell>
+                  <TableCell>{element.quantity}</TableCell>
+                  <TableCell>{element.price}</TableCell>
+                  <TableCell>{element.rating}</TableCell>
+                  <TableCell>{element.itemCondition}</TableCell>
+                  <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
+                  <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
+                </TableRow>
+              ))}        
+            </TableBody>       
+          </Table>
         </TableContainer>
-
-
-
-
-
 
           // <MUIDataTable
           //   title="Employee List"
@@ -274,8 +111,6 @@ export default function Tables() {
           //     filterType: "checkbox",
           //   }}
           // />
-
-  
           )}
         </Grid> 
       </Grid>
