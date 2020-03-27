@@ -89,6 +89,8 @@ export default function Tables() {
               ))}        
             </TableBody>       
           </Table>
+          <TablePagination
+          />
         </TableContainer>
 
           // <MUIDataTable
