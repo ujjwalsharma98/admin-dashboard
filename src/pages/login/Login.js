@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import LockIcon from '@material-ui/icons/Lock';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import FormControl from '@material-ui/core/FormControl';
 import {
   Grid,
   CircularProgress,
@@ -6,6 +10,7 @@ import {
   Button,
   Tabs,
   Tab,
+  IconButton,
   TextField,
   Fade,
 } from "@material-ui/core";
@@ -18,6 +23,7 @@ import useStyles from "./styles";
 // logo
 import logo from "./logo.svg";
 import google from "../../images/google.svg";
+import LoginLogo  from '../../images/login_logo.png';
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
@@ -37,11 +43,12 @@ function Login(props) {
   var [passwordValue, setPasswordValue] = useState("admin");
 
   return (
-    <Grid container className={classes.container}>
-      <div className={classes.logotypeContainer}>
-        <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>KitaBeli</Typography>
-      </div>
+    <Grid container className="login_container" >
+     <Grid item xs={6} className="logo_col">
+        <img src={LoginLogo} alt="logo" className="login_logo" />
+        </Grid>
+        
+        <Grid item xs={6}  className="form_col">
       <div className={classes.formContainer}>
         <div className={classes.form}>
           <Tabs
@@ -49,27 +56,18 @@ function Login(props) {
             onChange={(e, id) => setActiveTabId(id)}
             indicatorColor="primary"
             textColor="primary"
-            centered
-          >
+            centered>
             <Tab label="Login" classes={{ root: classes.tab }} />
-            {/* <Tab label="New User" classes={{ root: classes.tab }} /> */}
+          
           </Tabs>
           {activeTabId === 0 && (
-            <React.Fragment>
-              {/* <Typography variant="h1" className={classes.greeting}>
-                Good Morning, User
-              </Typography> 
-              <div className={classes.formDividerContainer}>
-                <div className={classes.formDivider} />
-                <Typography className={classes.formDividerWord}>or</Typography>
-                <div className={classes.formDivider} />
-              </div> */}
+            <React.Fragment>           
               <Fade in={error}>
                 <Typography color="secondary" className={classes.errorMessage}>
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
+         <div className="email_field"><div><IconButton className="mail_icon"><AlternateEmailIcon/></IconButton></div> <TextField
                 id="email"
                 InputProps={{
                   classes: {
@@ -80,11 +78,14 @@ function Login(props) {
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
                 margin="normal"
-                placeholder="Email Adress"
+                placeholder="Your Email Adress"
                 type="email"
+                label="EMAIL"
+                style={{margin:'0'}}
                 fullWidth
-              />
-              <TextField
+              /></div>     
+        
+        <div className="password_field"><div><IconButton className="password_icon"><LockIcon/></IconButton></div><TextField id="input-with-icon-grid" 
                 id="password"
                 InputProps={{
                   classes: {
@@ -95,10 +96,15 @@ function Login(props) {
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
                 margin="normal"
-                placeholder="Password"
+                placeholder="Your Password"
                 type="password"
-                fullWidth
-              />
+                label="PASSWORD"
+                style={{margin:'0'}}
+               
+                fullWidth /> </div>
+       
+              
+
               <div className={classes.formButtons}>
                 {isLoading ? (
                   <CircularProgress size={26} className={classes.loginLoader} />
@@ -147,6 +153,7 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
+              
               <TextField
                 id="name"
                 InputProps={{
@@ -162,6 +169,7 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
+              
               <TextField
                 id="email"
                 InputProps={{
@@ -177,6 +185,7 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
+             
               <TextField
                 id="password"
                 InputProps={{
@@ -192,6 +201,7 @@ function Login(props) {
                 type="password"
                 fullWidth
               />
+              
               <div className={classes.creatingButtonContainer}>
                 {isLoading ? (
                   <CircularProgress size={26} />
@@ -244,6 +254,7 @@ function Login(props) {
           © 2014-2019 KitaBeli, LLC. All rights reserved.
         </Typography>
       </div>
+      </Grid>
     </Grid>
   );
 }

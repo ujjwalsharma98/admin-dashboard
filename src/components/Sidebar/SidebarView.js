@@ -50,7 +50,8 @@ const structure = [
 
 const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent, location }) => {
   return (
-    <Drawer
+    <div className="sidebar_one">
+    <Drawer className="brawer"
       variant={isPermanent ? 'permanent' : 'temporary'}
       className={classNames(classes.drawer, {
         [classes.drawerOpen]: isSidebarOpened,
@@ -75,6 +76,7 @@ const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermane
         {structure.map(link => <SidebarLink key={link.id} location={location} isSidebarOpened={isSidebarOpened} {...link} />)}
       </List>
     </Drawer>
+    </div>
   );
 }
 

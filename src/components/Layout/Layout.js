@@ -1,4 +1,17 @@
 import React, { useState } from "react";
+import Icon from '@material-ui/core/Icon';
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  IconButton,
+  InputBase,
+  Menu,
+  MenuItem,
+  Fab,
+  Grid,
+} from "@material-ui/core";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import {
   Route,
   Switch,
@@ -24,23 +37,23 @@ import Charts from "../../pages/charts";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
-const ButtonOne = Styled.div`
-  background-color: pink;
-  border-radius: 10px;
-  height: 20px;
-  position: relative;
-  left: -1%;
-  top: 80px;
-`
+// const ButtonOne = Styled.div`
+//   background-color: pink;
+//   border-radius: 10px;
+//   height: 20px;
+//   position: relative;
+//   left: -1%;
+//   top: 80px;
+// `
 
-const ButtonTwo = Styled.div`
-  background-color: pink;
-  border-radius: 10px;
-  height: 20px;
-  position: relative;
-  left: -1%;
-  top: 80px;
-`
+// const ButtonTwo = Styled.div`
+//   background-color: pink;
+//   border-radius: 10px;
+//   height: 20px;
+//   position: relative;
+//   left: -1%;
+//   top: 80px;
+// `
 
 function Layout(props) {
   var classes = useStyles();
@@ -71,25 +84,26 @@ function Layout(props) {
         <>
           <Header history={props.history} />
           {showSidebarOne ? <Sidebar/> : ''}
-          <ButtonOne onClick={() => {
-            SidebarViewOne()
-          }}
-          >Click
-          </ButtonOne>
+          
 
           {showSidebarTwo ? <ChildSidebar/> : ''}
-          <ButtonTwo onClick={() => {
+          <IconButton className="toogle_btn" onClick={() => {
             SidebarViewTwo()
           }}
-          >Click
-          </ButtonTwo>
+          >
+            <ArrowForwardIosIcon className="sidebar_arrow"></ArrowForwardIosIcon>
+          
+          </IconButton>
           <div
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,
             })}
           >
             <div className={classes.fakeToolbar} />
+
+            
             <Switch>
+              
               <Route path="/app/dashboard" component={Dashboard} /> 
               <Route path="/app/tables" component={Tables} /> 
               <Route

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import Avatar from '@material-ui/core/Avatar';
+// import FontIcon from 'material-ui/FontIcon';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Icon from '@material-ui/core/Icon';
+
 
 import {
   AppBar,
@@ -40,59 +44,6 @@ import {
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
 
-const messages = [
-  {
-    id: 0,
-    variant: "warning",
-    name: "Jane Hew",
-    message: "Hey! How is it going?",
-    time: "9:32",
-  },
-  {
-    id: 1,
-    variant: "success",
-    name: "Lloyd Brown",
-    message: "Check out my new Dashboard",
-    time: "9:18",
-  },
-  {
-    id: 2,
-    variant: "primary",
-    name: "Mark Winstein",
-    message: "I want rearrange the appointment",
-    time: "9:15",
-  },
-  {
-    id: 3,
-    variant: "secondary",
-    name: "Liana Dutti",
-    message: "Good news from sale department",
-    time: "9:09",
-  },
-];
-
-const notifications = [
-  { id: 0, color: "warning", message: "Check out this awesome ticket" },
-  {
-    id: 1,
-    color: "success",
-    type: "info",
-    message: "What is the best way to get ...",
-  },
-  {
-    id: 2,
-    color: "secondary",
-    type: "notification",
-    message: "This is just a simple notification",
-  },
-  {
-    id: 3,
-    color: "primary",
-    type: "e-commerce",
-    message: "12 new orders has arrived today",
-  },
-];
-
 export default function Header(props) {
   var classes = useStyles();
 
@@ -108,6 +59,7 @@ export default function Header(props) {
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
+  
 
   return (
     <AppBar position="fixed" className={classes.appBar+ " menuBar"}>
@@ -118,18 +70,58 @@ export default function Header(props) {
  
       
       </Toolbar>
-          </Grid>
-          <Grid item xs={6} style={{alignSelf:'center', paddingRight:'100px', }}>
-
-          <Avatar style={{float:'right'}} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          <Button style={{float:'right'}}  color="primary">
-  Logout
-</Button>
-          </Grid>
-          </Grid>
+     </Grid>
+          <Grid item xs={5} style={{alignSelf:'center',  }}>
 
 
-      
+          <div style={{display:'flex',alignSelf: 'center', color:'black',     float: 'right'}}>
+                  
+                  <Typography variant="h6" style={{color:'black',display:'flex',alignSelf: 'center'}}>
+                    
+                    Hello, Prateek 
+                  </Typography>
+                  <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
+                  
+                  <div className="dropIcon" style={{display:'flex',alignSelf: 'center'}}>
+                    <Icon
+                      aria-controls="simple-menu"
+                      aria-haspopup="true"
+                      className="dropdown-btn"
+                    >
+                    <ArrowDropDownIcon/>
+                    </Icon >
+                    {/* <Menu
+                      id="simple-menu"
+                      anchorEl={this.state.anchorEl}
+                      keepMounted
+                      open={Boolean(this.state.anchorEl)}
+                      onClose={e => this.handleClose(e)}
+                    >
+                      <MenuItem>Profile</MenuItem>
+                      <MenuItem>My account</MenuItem>
+                      <MenuItem>Logout</MenuItem>
+                    </Menu> */}
+                  </div>
+                  </div>
+
+
+          {/* <div style={{ minWidth: '260px', paddingTop: ' 10px' }}>
+            <Grid  container>
+              <Grid item xs={3}>
+
+              </Grid>
+              <Grid	item xs={9} className="profileInfo" 	style={{ alignSelf: 'center' }} >
+               
+						</Grid>
+            </Grid>
+
+            </div> */}
+          </Grid>
+
+          <Grid item xs={1}></Grid>
+          </Grid>
+
+
     </AppBar>
   );
 }

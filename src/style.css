@@ -74,3 +74,90 @@ body{
     border-radius: 20px;
 
 }
+
+
+
+/* sidebar ui */
+.sidebar_two {
+    background-color: #ffe77b;
+    width: 150px;
+    border-top-right-radius: 30px;
+    margin-top: 64px;
+    
+}
+
+
+.toogle_btn {
+    width: 35px!important;
+    height: 35px!important;
+    background-color: #e65a28!important;
+    top: 117px!important;
+    border-radius: 100%!important;
+    left: -5px;
+    padding: 0!important;
+}
+.sidebar_arrow {
+    color: white!important;
+}
+
+.sidebar_two_menu {
+    margin-left: 8px!important;
+    margin-top: 90px!important;
+}
+
+.sidebar_two_menu .side_img{
+    width: 20px;
+    margin-right: 8px;
+}
+.sidebar_two_menu .Side_MenuList {
+    border-top-left-radius: 30px!important;
+    border-bottom-left-radius: 30px!important;
+    padding: 12px 3px 12px 22px!important;
+
+}
+
+
+/* login container */
+.login_container{
+    height: 100vh;
+}
+.logo_col{
+    background-color: #ffdc3c;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.form_col {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+.login_logo {
+    width: 300px;
+}
+
+.password_field , .email_field {
+    display: flex;
+    margin-bottom: 10px!important;
+}
+.email_field  label{
+    font-weight: 600!important;
+    font-size: 16px!important;
+    letter-spacing: 1px!important;
+    color: #58595b!important;
+
+}
+.password_field  label{
+    font-weight: 600!important;
+    font-size: 16px!important;
+    letter-spacing: 1px!important;
+    color: #58595b!important;
+
+}
+.mail_icon   , .password_icon {
+    box-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+    background-color: ffffff!important;
+    margin-right: 10px!important;
+}
