@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Link } from 'react-router-dom';
 import { Grid } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import Table from '@material-ui/core/Table';
@@ -23,7 +24,6 @@ import { API_URL } from "../../Services"
 // components
 import PageTitle from "../../components/PageTitle";  
 import AddEditItem from "./components/AddEditItem";
-
 
 export default function Tables() {
   const [datatableData, setData] = useState([]);
@@ -113,6 +113,9 @@ export default function Tables() {
           // />
           )}
         </Grid> 
+        <Link to="/app/tables/additem">
+          <button>Add Item</button>
+        </Link>
       </Grid>
     </>
   );

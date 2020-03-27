@@ -33,6 +33,7 @@ import ChildSidebar from '../ChildSideBar'
 // pages
 import Dashboard from "../../pages/dashboard"; 
 import Tables from "../../pages/tables"; 
+import Additem from "../../pages/tables/components/AddItem";
 import Charts from "../../pages/charts";
 
 // context
@@ -88,6 +89,7 @@ function Layout(props) {
           
           <ParentSidebar/>
           {showSidebarTwo ? <ChildSidebar/> : ''}
+          
           <IconButton className="toogle_btn" onClick={() => {
             SidebarViewTwo()
           }}
@@ -104,7 +106,8 @@ function Layout(props) {
 
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} /> 
-              <Route path="/app/tables" component={Tables} /> 
+              <Route path="/app/tables" component={Tables} exact/>
+              <Route path="/app/tables/additem" component={Additem} exact /> 
               <Route
                 exact
                 path="/app/ui"

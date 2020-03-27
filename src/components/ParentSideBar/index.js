@@ -11,19 +11,6 @@ import SettingImg  from '../../Icons/Settings_Normal.png';
 import AdminImg  from '../../Icons/Admin_Normal.png';
 import ReportsImg  from '../../Icons/Reports_Normal.png';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 import {
     AppBar,
     Toolbar,
