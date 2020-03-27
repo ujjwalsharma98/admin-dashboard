@@ -81,7 +81,7 @@ function Layout(props) {
             <div className={classes.fakeToolbar} />
 
             <Switch>
-              <Route path="/app/dashboard" component={Dashboard} /> 
+              <Route path="/app/dashboard" render={() => <Redirect to="/app/tables" />}/> 
               <Route path="/app/tables" component={Tables} exact/>
               <Route path="/app/tables/additem" component={Additem} exact /> 
               <Route
