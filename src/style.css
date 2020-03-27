@@ -248,3 +248,26 @@ body{
 .Side_mainList {
     padding: 10px 0px;
 }  
+
+
+/* add item pages inputfields */
+
+.add_fieldCol {
+    
+    padding: 10px;
+}
+.add_textField{
+    width: 100%!important;
+
+}
+
+.additem_btn{
+    background-color: #58595b!important;
+    border-radius: 50px!important;
+    font-weight: 500!important;
+    color: white!important;
+    font-size: 21px!important;
+    font-weight: 500!important;
+    letter-spacing: 1px!important;
+
+}
