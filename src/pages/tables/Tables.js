@@ -55,7 +55,7 @@ export default function Tables() {
         <h1>Loading ...</h1>
       ) : (
         <TableContainer className="tabelContainer" >
-          <Table className="tabel">
+          <Table className="tabel" style={{zoom:'70%'}}>
             <TableHead >
               <TableRow className="tabelHead_row">
                 <TableCell><span>Id</span></TableCell>
