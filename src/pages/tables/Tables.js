@@ -28,8 +28,18 @@ import AddEditItem from "./components/AddEditItem";
 export default function Tables() {
   const [datatableData, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [url, setUrl] = useState(
-    `${API_URL}/api/v1/int-tool/item?page=0&size=100&sort=price,DESC`);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [url, setUrl] = useState(`${API_URL}/api/v1/int-tool/item?page=0&size=100&sort=price,DESC`);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   /**
    * Fetch the data on Page Load
@@ -72,7 +82,10 @@ export default function Tables() {
               </TableRow>
             </TableHead>
             <TableBody className="tabelBody">
-              {datatableData.map((element) => (
+              {(rowsPerPage > 0
+              ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : datatableData
+              ).map((element) => (
                 <TableRow className="tabelBody_row" >
                   <TableCell>{element.id}</TableCell>
                   <TableCell>{element.name}</TableCell>
@@ -90,30 +103,20 @@ export default function Tables() {
             </TableBody>       
           </Table>
           <TablePagination
+            rowsPerPageOptions={[5, 10, 25, 50, { label: 'All', value: -1 }]}
+            colSpan={3}
+            count={datatableData.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            SelectProps={{
+              inputProps: { 'aria-label': 'rows per page' },
+              native: true,
+            }}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
           />
         </TableContainer>
-
-          // <MUIDataTable
-          //   title="Employee List"
-          //   className="tabel"
-          //   data={datatableData.map(item => {
-          //     return [
-          //         item.id,
-          //         item.price,
-          //         item.sellerName,
-          //         item.soloPrice,
-          //         item.groupPrice,
-          //         item.price,
-          //         item.category,
-          //         item.itemCondition,
-          //     ]
-          // })}
-          //   columns={["ID", "Price", "Seller Name", "Solo Price", "Group Price", "Price", "Category", "Item Condition"]}
-          //   options={{
-          //     filterType: "checkbox",
-          //   }}
-          // />
-          )}
+        )}
         </Grid> 
         <Link to="/app/tables/additem">
           <button>Add Item</button>
