@@ -12,13 +12,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import PageTitle from "../../../components/PageTitle";  
+
 const Additem = () => {
     return(
         <div>
-            <Link to="/app/tables">
-                <button>Back</button>
-            </Link>
-            Hello
+            <PageTitle title="Add new item" />
         </div>
     )
 }
