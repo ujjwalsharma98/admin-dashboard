@@ -27,6 +27,7 @@ import useStyles from "./styles";
 // components
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import ParentSidebar from '../ParentSideBar'
 import ChildSidebar from '../ChildSideBar'
 
 // pages
@@ -83,9 +84,9 @@ function Layout(props) {
     <div className={classes.root}>
         <>
           <Header history={props.history} />
-          {showSidebarOne ? <Sidebar/> : ''}
+          {/* {showSidebarOne ? <Sidebar/> : ''} */}
           
-
+          <ParentSidebar/>
           {showSidebarTwo ? <ChildSidebar/> : ''}
           <IconButton className="toogle_btn" onClick={() => {
             SidebarViewTwo()
@@ -101,9 +102,7 @@ function Layout(props) {
           >
             <div className={classes.fakeToolbar} />
 
-            
             <Switch>
-              
               <Route path="/app/dashboard" component={Dashboard} /> 
               <Route path="/app/tables" component={Tables} /> 
               <Route
