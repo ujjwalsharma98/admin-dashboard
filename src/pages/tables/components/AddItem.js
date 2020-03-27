@@ -17,6 +17,9 @@ import PageTitle from "../../../components/PageTitle";
 const Additem = () => {
     return(
         <div>
+            <Link to="/app/tables">
+                <button>Back</button>
+            </Link>
             <PageTitle title="Add new item" />
         </div>
     )
