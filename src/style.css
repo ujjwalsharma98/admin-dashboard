@@ -85,6 +85,14 @@ body{
     margin-top: 64px;
     
 }
+.side_menu_text {
+    font-size: 16px!important;
+  font-weight: 500!important;
+  color: rgb(255, 255, 255)!important;
+  line-height: 1.2;
+  text-decoration: none!important;
+
+}
 
 
 .toogle_btn {
@@ -137,7 +145,27 @@ body{
 .login_logo {
     width: 300px;
 }
-
+.signin_text {
+    font-size: 60px!important;
+    color: rgb(88, 89, 91)important;
+    text-transform: uppercaseimportant;
+    line-height: 1.2important;
+    margin-bottom: 25px;
+    font-weight: 600!important;
+    text-align: center;
+}
+.signin_des{
+    margin-bottom: 25px!important;
+    text-align: centerimportant;
+    font-weight: 500important;
+    font-size: 16pximportant;
+}
+.signin_btn{
+  background-color: #58595b!important;
+  border-radius: 20px!important;
+  font-weight: 600;
+  color: white!important;
+}
 .password_field , .email_field {
     display: flex;
     margin-bottom: 10px!important;
@@ -161,3 +189,44 @@ body{
     background-color: ffffff!important;
     margin-right: 10px!important;
 }
+
+/* main sidebar css */
+.main_bottom {
+    position: absolute;
+}
+.sidebar_one{
+    background-color: #e65a28;
+    width: 90px;
+    padding: 0 8px;
+}
+
+.sidebar_one_menu {
+    margin-top:75px!important;
+}
+
+.Side_mainList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.Side_mainList   .side_img {
+    max-width: 100%;
+    
+
+}
+
+.sidebar_one_menu .icon_box {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 20px;
+    /* background-color: rgb(255, 255, 255); */
+    /* box-shadow: 0px 0px 12px 0px rgba(61, 211, 157, 0.75); */
+}
+.Side_mainList {
+    padding: 10px 0px;
+}  
