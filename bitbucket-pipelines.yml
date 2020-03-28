@@ -1,0 +1,23 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:10.15.3
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script: # Modify the commands below to build your repository.
+          - npm install
+          - npm test
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.2
+            variables:
+               AWS_ACCESS_KEY_ID: 'AKIAXN3M6235TPW5LVFJ'  
+               AWS_SECRET_ACCESS_KEY:  '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'
+               AWS_DEFAULT_REGION:  'ap-south-1'
+               APPLICATION_NAME: 'giladiskon-dashboard'
+               ENVIRONMENT_NAME: 'production'
+               ZIP_FILE: 'application.zip' 
