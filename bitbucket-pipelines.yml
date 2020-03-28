@@ -18,3 +18,5 @@ pipelines:
                ENVIRONMENT_NAME: 'develop'
                ZIP_FILE: 'application.zip' 
                S3_BUCKET: 'elasticbeanstalk-us-east-2-591076044691'
+               AWS_DEFAULT_REGION:  'us-east-2'
+               
