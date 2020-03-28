@@ -16,5 +16,6 @@ pipelines:
             variables: 
                APPLICATION_NAME: 'Kitabeli-Dashboard-Dev'
                ENVIRONMENT_NAME: 'Test'
+               AWS_DEFAULT_REGION:  'us-east-2'
                ZIP_FILE: 'application.zip' 
                S3_BUCKET: 'elasticbeanstalk-us-east-2-591076044691'
