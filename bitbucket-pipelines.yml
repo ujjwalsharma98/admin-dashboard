@@ -17,3 +17,4 @@ pipelines:
                APPLICATION_NAME: 'Kitabeli-Dashboard-Dev'
                ENVIRONMENT_NAME: 'develop'
                ZIP_FILE: 'application.zip' 
+               S3_BUCKET: 'elasticbeanstalk-us-east-2-591076044691'
