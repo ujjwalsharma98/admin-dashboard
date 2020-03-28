@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:10.15.3
+image: node:12.16.1
 
 pipelines:
   default:
@@ -12,7 +12,6 @@ pipelines:
           - node
         script: # Modify the commands below to build your repository.
           - npm install
-          - npm run build
           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.2
             variables:
                APPLICATION_NAME: 'Kitabeli-Dashboard-Dev'
