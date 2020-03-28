@@ -14,7 +14,6 @@ pipelines:
           - npm install
           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.2
             variables:
-               APPLICATION_NAME: 'Kitabeli-Dashboard-Dev'
-               ENVIRONMENT_NAME: 'production'
+               APPLICATION_NAME: 'Kitabeli-Dashboard-Dev' 
                ZIP_FILE: 'application.zip' 
                S3_BUCKET: 'elasticbeanstalk-us-east-2-591076044691'
