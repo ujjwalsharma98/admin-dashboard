@@ -21,4 +21,3 @@ pipelines:
                ENVIRONMENT_NAME: 'production'
                ZIP_FILE: 'application.zip' 
                S3_BUCKET: 'elasticbeanstalk-ap-southeast-1-510792750843'
-               VERSION_LABEL: 'deploy-$BITBUCKET_BUILD_NUMBER-multiple'
