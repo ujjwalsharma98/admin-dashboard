@@ -13,7 +13,6 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - npm install
           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.2
-            variables:
-               APPLICATION_NAME: 'Kitabeli-Dashboard-Dev' 
+            variables: 
                ZIP_FILE: 'application.zip' 
                S3_BUCKET: 'elasticbeanstalk-us-east-2-591076044691'
