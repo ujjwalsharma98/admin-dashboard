@@ -1,7 +1,12 @@
 import React, {useEffect, useState, makeStyles} from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { Grid } from "@material-ui/core";
+=======
+import { Grid , IconButton , Typography} from "@material-ui/core";
+import MUIDataTable from "mui-datatables";
+>>>>>>> 012c0dce8a1d6545eab1a18aa34858c29aad3fbd
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -13,6 +18,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
+<<<<<<< HEAD
+=======
+import AddIcon from '@material-ui/icons/Add';
+import iicccoonn  from '../../Icons/Admin_Normal.png';
+>>>>>>> 012c0dce8a1d6545eab1a18aa34858c29aad3fbd
 
 import { API_URL } from "../../Services"
 // components
@@ -109,6 +119,8 @@ export default function Tables(props) {
               ))}        
             </TableBody>       
           </Table>
+          <Grid container >
+          <Grid item xs={9}>
           <TablePagination
             rowsPerPageOptions={[5, 10, 25, 50, { label: 'All', value: -1 }]}
             colSpan={3}
@@ -121,13 +133,22 @@ export default function Tables(props) {
             }}
             onChangePage={handleChangePage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
+          /></Grid>
+          <Grid item xs={3} className="" >
+         <div style={{display:'flex', flexDirection:'column' , alignSelf: 'center' , alignItems: 'center' }}>
+         <Link to="/app/tables/additem" style={{textDecoration:'none'}}>
+          <IconButton style={{   backgroundColor: '#e65a28', color: 'white'
+ 
+}} ><AddIcon/></IconButton>
+          </Link><Typography>Add Item</Typography>
+
+         </div>
+            </Grid>
+          </Grid>
         </TableContainer>
         )}
         </Grid> 
-        <Link to="/app/tables/additem">
-          <button>Add Item</button>
-        </Link>
+       
       </Grid>
     </>
   ); 
