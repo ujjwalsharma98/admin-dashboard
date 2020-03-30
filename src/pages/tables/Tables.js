@@ -59,7 +59,6 @@ export default function Tables() {
     <>
       <PageTitle title="Items" />
       <Grid container spacing={4}> 
-        <AddEditItem /> 
         <Grid item xs={12}>
         {isLoading ? (
         <h1>Loading ...</h1>
