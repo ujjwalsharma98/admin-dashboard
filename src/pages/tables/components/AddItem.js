@@ -12,17 +12,27 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import PageTitle from "../../../components/PageTitle";  
 
 const Additem = () => {
     return(
         <>
-        <div>
-            <Link to="/app/tables">
-                <button>Back</button>
+        <div  style={{position: 'relative'}}>
+          
+            
+            <Link to="/app/tables" style={{ color:'#e65a28', position: 'absolute' }} >
+            <ArrowBackIosIcon/>
             </Link>
-            <PageTitle title="Add new item" />
+            <Grid container  >
+            
+              <Grid item xs={12} style={{paddingLeft: '20px'}}>
+              <PageTitle  title="Add new item" />
+              </Grid>
+
+            </Grid>
+            
         </div>
         
     <TableContainer className="tabelContainer" style={{padding:"50px 20px"}} >

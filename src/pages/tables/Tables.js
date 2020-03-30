@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
-import { Grid } from "@material-ui/core";
+import { Grid , IconButton , Typography} from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
+import AddIcon from '@material-ui/icons/Add';
 import iicccoonn  from '../../Icons/Admin_Normal.png';
 
 import {
@@ -102,6 +103,8 @@ export default function Tables() {
               ))}        
             </TableBody>       
           </Table>
+          <Grid container >
+          <Grid item xs={9}>
           <TablePagination
             rowsPerPageOptions={[5, 10, 25, 50, { label: 'All', value: -1 }]}
             colSpan={3}
@@ -114,13 +117,22 @@ export default function Tables() {
             }}
             onChangePage={handleChangePage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
+          /></Grid>
+          <Grid item xs={3} className="" >
+         <div style={{display:'flex', flexDirection:'column' , alignSelf: 'center' , alignItems: 'center' }}>
+         <Link to="/app/tables/additem" style={{textDecoration:'none'}}>
+          <IconButton style={{   backgroundColor: '#e65a28', color: 'white'
+ 
+}} ><AddIcon/></IconButton>
+          </Link><Typography>Add Item</Typography>
+
+         </div>
+            </Grid>
+          </Grid>
         </TableContainer>
         )}
         </Grid> 
-        <Link to="/app/tables/additem">
-          <button>Add Item</button>
-        </Link>
+       
       </Grid>
     </>
   );

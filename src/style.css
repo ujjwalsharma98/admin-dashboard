@@ -69,9 +69,11 @@ body{
 }
 
 .seach_btn{
-    border: 1px solid #555555!important;
-    padding: 3px 10px!important;
-    border-radius: 20px;
+    border: 2px solid #c1c1c1!important;
+    padding: 5px 16px!important;
+    border-radius: 50px;
+    padding-right: 0!important;
+    width: 100%!important;
 
 }
 
@@ -271,3 +273,5 @@ body{
     letter-spacing: 1px!important;
 
 }
+
+
