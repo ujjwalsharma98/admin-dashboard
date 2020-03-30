@@ -1,12 +1,6 @@
 import React, {useEffect, useState, makeStyles} from "react";
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import { Grid } from "@material-ui/core";
-=======
 import { Grid , IconButton , Typography} from "@material-ui/core";
-import MUIDataTable from "mui-datatables";
->>>>>>> 012c0dce8a1d6545eab1a18aa34858c29aad3fbd
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,11 +12,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
-<<<<<<< HEAD
-=======
 import AddIcon from '@material-ui/icons/Add';
 import iicccoonn  from '../../Icons/Admin_Normal.png';
->>>>>>> 012c0dce8a1d6545eab1a18aa34858c29aad3fbd
 
 import { API_URL } from "../../Services"
 // components
