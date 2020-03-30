@@ -45,13 +45,12 @@ class Additem extends React.Component{
         description: this.id.description.getValue(),
     };
     data.append("myjsonkey", JSON.stringify(payload));
+    // console.log("DATA", data)
+    // console.log("PAYLOAD", payload)
 
     fetch('http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item',{
         method: 'POST',
-        headers: {
-        'Accept': 'application/json'
-    },
-        body: data
+        body: data,
     })
     .then(function(response) {
         return response.json()
@@ -75,28 +74,30 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >      
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="id"          
-                            placeholder="Id"
-                            multiline
-                            variant="outlined"
+                                className="add_textField"
+                                id="id"          
+                                placeholder="Id"
+                                multiline
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="price"          
-                            placeholder="Price"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="price"          
+                                placeholder="Price"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="soloPrice"          
-                            placeholder="Solo Price"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="soloPrice"          
+                                placeholder="Solo Price"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
                     {/* second grid */}
@@ -104,27 +105,30 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >         
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="groupPrice"          
-                            placeholder="Group Price"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="groupPrice"          
+                                placeholder="Group Price"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="unitPrice"          
-                            placeholder="Unit Size"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="unitPrice"          
+                                placeholder="Unit Size"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="name"          
-                            placeholder="Name"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="name"          
+                                placeholder="Name"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
                     {/* third grid */}
@@ -132,27 +136,30 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >         
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="sellerName"          
-                            placeholder="Seller Name"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="sellerName"          
+                                placeholder="Seller Name"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="sellerLocation"          
-                            placeholder="Seller Location"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="sellerLocation"          
+                                placeholder="Seller Location"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="category"          
-                            placeholder="Category"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="category"          
+                                placeholder="Category"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
                     {/* fourth grid */}
@@ -160,27 +167,30 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >         
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="quantity"          
-                            placeholder="Quantity"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="quantity"          
+                                placeholder="Quantity"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="rating"          
-                            placeholder="Rating"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="rating"          
+                                placeholder="Rating"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="ratingCount"          
-                            placeholder="Rating Count"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="ratingCount"          
+                                placeholder="Rating Count"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
 
@@ -189,27 +199,30 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer"  >         
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="itemCondition"          
-                            placeholder="Item Condition"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="itemCondition"          
+                                placeholder="Item Condition"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="transactionStatus"          
-                            placeholder="Transaction  Status"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="transactionStatus"          
+                                placeholder="Transaction  Status"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="itemSold"          
-                            placeholder="Merchant item sold "
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="itemSold"          
+                                placeholder="Merchant item sold "
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
                     {/* sixth grid */}
@@ -217,19 +230,21 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >         
                         <Grid item xs={4}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="trending"          
-                            placeholder="Trending "
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="trending"          
+                                placeholder="Trending "
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="inStock"          
-                            placeholder="In stock"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="inStock"          
+                                placeholder="In stock"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                         </Grid>
@@ -239,12 +254,13 @@ class Additem extends React.Component{
                     <Grid container  className="add_itemContainer" >         
                         <Grid item xs={12}   className="add_fieldCol">
                             <TextField
-                            className="add_textField"
-                            id="description"          
-                            placeholder="Description"
-                            rows="5"
-                            multiline
-                            variant="outlined"/>
+                                className="add_textField"
+                                id="description"          
+                                placeholder="Description"
+                                rows="5"
+                                multiline
+                                variant="outlined"
+                            />
                         </Grid>
                     </Grid>
                     <Grid container  className="add_itemContainer" >         

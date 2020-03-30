@@ -90,7 +90,7 @@ export default function Header(props) {
                   <ArrowDropDownIcon/>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={()=> console.log("HELLO")}>Logout</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> console.log("Props>>>", props)}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               {/* <Menu

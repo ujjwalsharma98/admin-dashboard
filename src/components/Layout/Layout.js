@@ -63,13 +63,14 @@ function Layout(props) {
     <div className={classes.root}>
         <>
           <Header history={props.history} />
+
           <ParentSidebar/>
           {showSidebarTwo ? <ChildSidebar/> : <Bar/>}
+          
           <IconButton className="toogle_btn" onClick={() => {
             SidebarViewTwo()
           }}
           >
-
           {showSidebarTwo === false ? <ArrowForward className="sidebar_arrow"></ArrowForward> : <ArrowBack className="sidebar_arrow"></ArrowBack>}
           
           </IconButton>
@@ -79,7 +80,6 @@ function Layout(props) {
             })}
           >
             <div className={classes.fakeToolbar} />
-
             <Switch>
               <Route path="/app/dashboard" render={() => <Redirect to="/app/tables" />}/> 
               <Route path="/app/tables" component={Tables} exact/>
