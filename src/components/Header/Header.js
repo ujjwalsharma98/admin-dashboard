@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown'
 import Avatar from '@material-ui/core/Avatar';
 // import FontIcon from 'material-ui/FontIcon';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -66,62 +67,56 @@ export default function Header(props) {
       <Grid container spacing={3} style={{alignSelf:'center'}}>
         <Grid item xs={6}>
         <Toolbar className={classes.toolbar}>
-      <img src={logo} alt="logo" className="menuLogo"  />
- 
-      
-      </Toolbar>
-     </Grid>
+          <img src={logo} alt="logo" className="menuLogo"  />
+        </Toolbar>
+      </Grid>
           <Grid item xs={5} style={{alignSelf:'center',  }}>
-
-
-          <div style={{display:'flex',alignSelf: 'center', color:'black',     float: 'right'}}>
-                  
-                  <Typography variant="h6" style={{color:'black',display:'flex',alignSelf: 'center'}}>
-                    
-                    Hello, Prateek 
-                  </Typography>
-                  <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
-                  
-                  <div className="dropIcon" style={{display:'flex',alignSelf: 'center'}}>
-                    <Icon
-                      aria-controls="simple-menu"
-                      aria-haspopup="true"
-                      className="dropdown-btn"
-                    >
-                    <ArrowDropDownIcon/>
-                    </Icon >
-                    {/* <Menu
-                      id="simple-menu"
-                      anchorEl={this.state.anchorEl}
-                      keepMounted
-                      open={Boolean(this.state.anchorEl)}
-                      onClose={e => this.handleClose(e)}
-                    >
-                      <MenuItem>Profile</MenuItem>
-                      <MenuItem>My account</MenuItem>
-                      <MenuItem>Logout</MenuItem>
-                    </Menu> */}
-                  </div>
-                  </div>
-
-
-          {/* <div style={{ minWidth: '260px', paddingTop: ' 10px' }}>
+          <div style={{display:'flex',alignSelf: 'center', color:'black',     float: 'right'}}>    
+            <Typography variant="h6" style={{color:'black',display:'flex',alignSelf: 'center'}}>
+              Hello, Prateek 
+            </Typography>
+            <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
+            
+            <div className="dropIcon" style={{display:'flex',alignSelf: 'center'}}>
+              {/* <Icon
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                className="dropdown-btn"
+              >
+                <ArrowDropDownIcon/>
+              </Icon > */}
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  <ArrowDropDownIcon/>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              {/* <Menu
+                id="simple-menu"
+                anchorEl={this.state.anchorEl}
+                keepMounted
+                open={Boolean(this.state.anchorEl)}
+                onClose={e => this.handleClose(e)}
+              >
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>My account</MenuItem>
+                <MenuItem>Logout</MenuItem>
+              </Menu> */}
+            </div>
+            </div>
+          <div style={{ minWidth: '260px', paddingTop: ' 10px' }}>
             <Grid  container>
               <Grid item xs={3}>
-
               </Grid>
               <Grid	item xs={9} className="profileInfo" 	style={{ alignSelf: 'center' }} >
-               
 						</Grid>
             </Grid>
-
-            </div> */}
+            </div>
           </Grid>
-
-          <Grid item xs={1}></Grid>
-          </Grid>
-
-
+        <Grid item xs={1}></Grid>
+      </Grid>
     </AppBar>
   );
 }
