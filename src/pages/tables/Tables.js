@@ -13,12 +13,10 @@ import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
 import AddIcon from '@material-ui/icons/Add';
-import iicccoonn  from '../../Icons/Admin_Normal.png';
 
 import { API_URL } from "../../Services"
 // components
 import PageTitle from "../../components/PageTitle";  
-import AddEditItem from "./components/AddEditItem";
 
 const headCells = [
   { id: 'id', numeric: true, disablePadding: false, label: 'Id' },
@@ -39,13 +37,15 @@ export default function Tables(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [sortBy, setSortBy] = useState('id')
+  const [sortOrder, setSortOrder] = useState('ASC')
+  const [url, setUrl] = useState(`${API_URL}/api/v1/int-tool/item?page=0&size=${rowsPerPage}&sort=${sortBy},${sortOrder}`);
+  
   const fetchLimit = rowsPerPage*(page+2)
-  
-  const [url, setUrl] = useState(`${API_URL}/api/v1/int-tool/item?page=0&size=${rowsPerPage}&sort=price,DESC`);
-  
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${fetchLimit}&sort=price,DESC`)
+    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${fetchLimit}&sort=${sortBy},${sortOrder}`)
     fetchData(url);
   };
 
@@ -53,9 +53,19 @@ export default function Tables(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
     let pageLength = parseInt(event.target.value, 10)
-    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=price,DESC`)
+    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=${sortBy},${sortOrder}`)
     fetchData(url);
   };
+
+  const changeSorting = headCell => {
+    if(headCell.numeric === true){
+      setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${fetchLimit}&sort=${headCell.id},${sortOrder}`)
+      fetchData(url);
+    }
+    else{
+      console.log("Check for more cases")
+    }
+  }
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -83,6 +93,9 @@ export default function Tables(props) {
               {headCells.map((headCell) => (
               <TableCell
                 key={headCell.id}
+                onClick={() => {
+                  changeSorting(headCell)
+                }}
               >
                 {headCell.label}
               </TableCell>
@@ -126,20 +139,18 @@ export default function Tables(props) {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           /></Grid>
           <Grid item xs={3} className="" >
-         <div style={{display:'flex', flexDirection:'column' , alignSelf: 'center' , alignItems: 'center' }}>
-         <Link to="/app/tables/additem" style={{textDecoration:'none'}}>
-          <IconButton style={{   backgroundColor: '#e65a28', color: 'white'
- 
-}} ><AddIcon/></IconButton>
-          </Link><Typography>Add Item</Typography>
-
-         </div>
+          <div style={{display:'flex', flexDirection:'column' , alignSelf: 'center' , alignItems: 'center' }}>
+            <Link to="/app/tables/additem" style={{textDecoration:'none'}}>
+              <IconButton style={{   backgroundColor: '#e65a28', color: 'white'}}>
+                <AddIcon/>
+              </IconButton>
+            </Link><Typography>Add Item</Typography>
+          </div>
             </Grid>
           </Grid>
         </TableContainer>
         )}
         </Grid> 
-       
       </Grid>
     </>
   ); 
