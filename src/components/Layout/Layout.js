@@ -63,17 +63,22 @@ function Layout(props) {
     <div className={classes.root}>
         <>
           <Header history={props.history} />
+           
+           <div className="hello-world">
+              <ParentSidebar/>
+              {showSidebarTwo ? <ChildSidebar/> : <Bar/>}
+              
+              <IconButton className="toogle_btn" onClick={() => {
+                SidebarViewTwo()
+              }}
+              >
+                {showSidebarTwo === false ? 
+                  <ArrowForward className="sidebar_arrow"></ArrowForward> : 
+                  <ArrowBack className="sidebar_arrow"></ArrowBack>
+                }
+              </IconButton>
+          </div>
 
-          <ParentSidebar/>
-          {showSidebarTwo ? <ChildSidebar/> : <Bar/>}
-          
-          <IconButton className="toogle_btn" onClick={() => {
-            SidebarViewTwo()
-          }}
-          >
-          {showSidebarTwo === false ? <ArrowForward className="sidebar_arrow"></ArrowForward> : <ArrowBack className="sidebar_arrow"></ArrowBack>}
-          
-          </IconButton>
           <div
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,

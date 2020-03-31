@@ -114,7 +114,7 @@ const Additem = props => {
                             className="add_textField"
                             id="soloPrice"          
                             placeholder="Solo Price"
-                            value={soloPrice} 
+                            value={soloPrice}
                             multiline
                             variant="outlined"
                             onChange={e => setSoloPrice(e.target.value)}
