@@ -9,6 +9,7 @@ import {
   Menu,
   MenuItem,
   Fab,
+  Typography,
   Grid,
 } from "@material-ui/core";
 import ArrowForward from '@material-ui/icons/ArrowForwardIos';
@@ -40,6 +41,24 @@ import Charts from "../../pages/charts";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
+
+import MenuList from '@material-ui/core/MenuList';
+import ItemImg  from '../../Icons/Items_Normal.png';
+import OrderImg  from '../../Icons/Order_Normal.png';
+import UserImg  from '../../Icons/Users_Normal.png';
+import ManageImg  from '../../Icons/Manage_Normal.png';
+import LogoutImg  from '../../Icons/Logout.png';
+import SettingImg  from '../../Icons/Settings_Normal.png';
+import AdminImg  from '../../Icons/Admin_Normal.png';
+import ReportsImg  from '../../Icons/Reports_Normal.png';
+// import ItemImg  from '../../Icons/Items_Normal.png';
+
+// import OrderImg  from '../../Icons/Order_Normal.png';
+// import UserImg  from '../../Icons/Users_Normal.png';
+import DealsImg  from '../../Icons/Deals_Normal.png';
+import transitions from "@material-ui/core/styles/transitions";
+
+
 const Bar = Styled.div`
   width: 20px;
   background-color: #ffe77b;
@@ -50,6 +69,27 @@ function Layout(props) {
   var layoutState = useLayoutState();
   var classes = useStyles();
   const [showSidebarTwo, setSidebarTwo] = useState(true);
+const toggle  = () => {
+  var x = document.getElementById("padding_side");
+  if (x.style.width == "20px") {
+    x.style.width = "140px";
+  } else {
+    x.style.width = "20px";
+  }
+  var y = document.getElementById("content_side");
+  if (y.style.paddingLeft == "20px") {
+    y.style.paddingLeft = "140px";
+  } else {
+    y.style.paddingLeft = "20px";
+  }
+//   var c = document.getElementById("icon_rotate");
+//   if (y.style.transform == "rotate(180deg)") {
+//     y.style.transform = "rotate(0deg)";
+//   } else {
+//     y.style.transform = "rotate(180deg)";
+//   }
+}
+
 
   const SidebarViewTwo = () => {
     if(showSidebarTwo){
@@ -64,26 +104,93 @@ function Layout(props) {
         <>
           <Header history={props.history} />
            
-           <div className="hello-world">
-              <ParentSidebar/>
-              {showSidebarTwo ? <ChildSidebar/> : <Bar/>}
+           <div className="main_sidebar" style={{display:'flex'}}>
+             <div className="fixed_sidebar" style={{width:'70px', position:'relative'}}>
+               <div className="top_part">
+               <div className="sidebar_one_menu main_top">
+               <div  className="menu_list">
+                 <div classnames="menu_list_item">
+                 <img src={ManageImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="side_menu_text">Manage</Typography>                 
+               </div>
+               <div className="menu_list">
+                 <div classnames="menu_list_item">
+                 <img src={ReportsImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="side_menu_text">Reports</Typography>                 
+               </div>
+               <div className="menu_list">
+                 <div classnames="menu_list_item">
+                 <img src={AdminImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="side_menu_text">Admin</Typography>                 
+               </div>
               
-              <IconButton className="toogle_btn" onClick={() => {
-                SidebarViewTwo()
-              }}
-              >
-                {showSidebarTwo === false ? 
-                  <ArrowForward className="sidebar_arrow"></ArrowForward> : 
-                  <ArrowBack className="sidebar_arrow"></ArrowBack>
-                }
-              </IconButton>
-          </div>
+               </div>
+               </div>
+               <div className="bottom_part">
+               <div className="sidebar_one_menu main_top">
+               <div className="menu_list">
+                 <div classnames="menu_list_item">
+                 <img src={SettingImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="side_menu_text">Setting</Typography>                 
+               </div>
+               <div className="menu_list">
+                 <div classnames="menu_list_item">
+                 <img src={LogoutImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="side_menu_text">Logout</Typography>                 
+               </div>
+               </div>
+               </div>
+              </div>
+             <div  id="padding_side" className="sidebar_scroll" style={{width:'20px'}}>
+              <div className="scroll_sidebar">
+              <div className="menu_list">
+                 <div className="scroll_item">
+                 <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="scroll_item_text">Order</Typography>                 
+               </div>
 
-          <div
+               <div className="menu_list">
+                 <div className="scroll_item">
+                 <img src={ItemImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="scroll_item_text">Items</Typography>                 
+               </div>
+
+               <div className="menu_list">
+                 <div className="scroll_item">
+                 <img src={UserImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="scroll_item_text">Users</Typography>                 
+               </div>
+
+               <div className="menu_list">
+                 <div className="scroll_item">
+                 <img src={DealsImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                 </div>
+                 <Typography className="scroll_item_text">Deals</Typography>                 
+               </div>
+              </div>
+             </div>
+              {/* <ParentSidebar/>
+              {showSidebarTwo ? <ChildSidebar/> : <Bar/>} */}
+              <div className="scroll_btn">
+              <div className="icon_clik" onClick={()=>{toggle()}}><ArrowForward id="icon_rotate"  style={{color:'white', transform:'rotate(180deg)' , height:'15px', width:'15px'}}/></div></div>
+                
+              </div>
+          
+          <div id="content_side" style={{paddingLeft:'20px', marginLeft:'90px' , transitions:' paddingLeft 300ms cubic-bezier(0.2, 0, 0, 1) 0s' } }
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,
             })}
+            
           >
+            
             <div className={classes.fakeToolbar} />
             <Switch>
               <Route path="/app/dashboard" render={() => <Redirect to="/app/tables" />}/> 
