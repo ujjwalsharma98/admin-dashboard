@@ -52,7 +52,7 @@ const Additem = props => {
 
         const body = new FormData();
         
-        body.append('id', parseInt(id));
+        // body.append('id', parseInt(id));
         body.append('price', parseInt(price));
         body.append('soloPrice', parseInt(soloPrice));
         body.append('groupPrice', parseInt(groupPrice));
@@ -71,7 +71,6 @@ const Additem = props => {
         body.append('inStock', inStock);
         body.append('description', description);
 
-        debugger
         fetch('http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item',{
             method: 'POST',
             body: body,
