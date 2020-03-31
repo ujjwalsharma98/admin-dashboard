@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Grid } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
@@ -14,43 +14,60 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
-import PageTitle from "../../../components/PageTitle";  
-
+import PageTitle from "../../../components/PageTitle";   
 const Additem = props => {
-    
+    const[id, setId] = useState();
+    const[price, setPrice] = useState();
+    const[soloPrice, setSoloPrice] = useState();
+    const[groupPrice, setGroupPrice] = useState();
+    const[unitSize, setUnitSize] = useState();
+    const[name, setName] = useState();
+    const[sellerName, setSellerName] = useState();
+    const[sellerLocation, setSellerLocation] = useState();
+    const[category, setCategory] = useState();
+    const[quantity, setQuantity] = useState();
+    const[rating, setRating] = useState();
+    const[ratingCount, setRatingCount] = useState();
+    const[itemCondition, setItemCondition] = useState();
+    const[transactionStatus, setTransactionStatus] = useState();
+    const[itemSold, setItemSold] = useState();
+    const[trending, setTrending] = useState();
+    const[inStock, setInStock] = useState();
+    const[description, setDescription] = useState();
+
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        debugger
         var data = new FormData();
         const payload = {
-            id: this.id.id.getValue(),
-            price: this.id.price.getValue(),
-            soloPrice: this.id.soloPrice.getValue(),
-            groupPrice: this.id.groupPrice.getValue(),
-            unitSize: this.id.unitSize.getValue(),
-            name: this.id.name.getValue(),
-            sellerName: this.id.sellerName.getValue(),
-            sellerLocation: this.id.sellerLocation.getValue(),
-            category: this.id.category.getValue(),
-            quantity: this.id.quantity.getValue(),
-            rating: this.id.rating.getValue(),
-            ratingCount: this.id.ratingCount.getValue(),
-            itemCondition: this.id.itemCondition.getValue(),
-            transactionStatus: this.id.transactionStatus.getValue(),
-            merchantItemSold: this.id.itemSold.getValue(),
-            trending: this.id.trending.getValue(),
-            inStock: this.id.inStock.getValue(),
-            description: this.id.description.getValue(),
+            id: id,
+            price: price,
+            soloPrice: soloPrice,
+            groupPrice: groupPrice,
+            unitSize: unitSize,
+            name: name,
+            sellerName: sellerName,
+            sellerLocation: sellerLocation,
+            category: category,
+            quantity: quantity,
+            rating: rating,
+            ratingCount: ratingCount,
+            itemCondition: itemCondition,
+            transactionStatus: transactionStatus,
+            merchantItemSold: itemSold,
+            trending: trending,
+            inStock: inStock,
+            description: description,
         }
         data.append("myjsonkey", JSON.stringify(payload));
         fetch('http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item',{
-        method: 'POST',
-        body: data,
-    })
-    .then(function(response) {
-        return response.json()
-      }).then(function(body) {
-        console.log(body);
-      });
+            method: 'POST',
+            body: data,
+        })
+        .then(function(response) {
+            return response.json()
+        }).then(function(body) {
+            console.log(body);
+        });
     }
 
     return(
@@ -61,7 +78,7 @@ const Additem = props => {
             </Link>
             <Grid container  >
               <Grid item xs={12} style={{paddingLeft: '20px'}}>
-              <PageTitle  title="Add new item" />
+                <PageTitle  title="Add new item" />
               </Grid>
             </Grid>
         </div>
@@ -75,17 +92,21 @@ const Additem = props => {
                             className="add_textField"
                             id="id"          
                             placeholder="Id"
+                            value={id}
                             multiline
                             variant="outlined"
+                            onChange={e => setId(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="price"          
+                            id="price"
+                            value={price}      
                             placeholder="Price"
                             multiline
                             variant="outlined"
+                            onChange={e => setPrice(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
@@ -93,8 +114,10 @@ const Additem = props => {
                             className="add_textField"
                             id="soloPrice"          
                             placeholder="Solo Price"
+                            value={soloPrice} 
                             multiline
                             variant="outlined"
+                            onChange={e => setSoloPrice(e.target.value)}
                         />
                     </Grid>
                 </Grid>
@@ -104,28 +127,34 @@ const Additem = props => {
                     <Grid item xs={4}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="groupPrice"          
+                            id="groupPrice"       
+                            value={groupPrice}    
                             placeholder="Group Price"
                             multiline
                             variant="outlined"
+                            onChange={e => setGroupPrice(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="unitPrice"          
+                            id="unitPrice"
+                            value={unitSize}       
                             placeholder="Unit Size"
                             multiline
                             variant="outlined"
+                            onChange={e => setUnitSize(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="name"          
+                            id="name"
+                            value={name}    
                             placeholder="Name"
                             multiline
                             variant="outlined"
+                            onChange={e => setName(e.target.value)}
                         />
                     </Grid>
                 </Grid>
@@ -135,28 +164,34 @@ const Additem = props => {
                     <Grid item xs={4}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="sellerName"          
+                            id="sellerName"
+                            value={sellerName} 
                             placeholder="Seller Name"
                             multiline
                             variant="outlined"
+                            onChange={e => setSellerName(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="sellerLocation"          
+                            id="sellerLocation"
+                            value={sellerLocation}   
                             placeholder="Seller Location"
                             multiline
                             variant="outlined"
+                            onChange={e => setSellerLocation(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="category"          
+                            id="category"
+                            value={category}          
                             placeholder="Category"
                             multiline
                             variant="outlined"
+                            onChange={e => setCategory(e.target.value)}
                         />
                     </Grid>
                 </Grid>
@@ -166,28 +201,34 @@ const Additem = props => {
                     <Grid item xs={4}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="quantity"          
+                            id="quantity"
+                            value={quantity}         
                             placeholder="Quantity"
                             multiline
                             variant="outlined"
+                            onChange={e => setQuantity(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="rating"          
+                            id="rating"
+                            value={rating} 
                             placeholder="Rating"
                             multiline
                             variant="outlined"
+                            onChange={e => setRating(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="ratingCount"          
+                            id="ratingCount"
+                            value={ratingCount}      
                             placeholder="Rating Count"
                             multiline
                             variant="outlined"
+                            onChange={e => setRatingCount(e.target.value)}
                         />
                     </Grid>
                 </Grid>
@@ -198,28 +239,34 @@ const Additem = props => {
                     <Grid item xs={4}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="itemCondition"          
+                            id="itemCondition"
+                            value={itemCondition}     
                             placeholder="Item Condition"
                             multiline
                             variant="outlined"
+                            onChange={e => setItemCondition(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="transactionStatus"          
+                            id="transactionStatus"
+                            value={transactionStatus}        
                             placeholder="Transaction  Status"
                             multiline
                             variant="outlined"
+                            onChange={e => setTransactionStatus(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="itemSold"          
+                            id="itemSold"
+                            value={itemSold} 
                             placeholder="Merchant item sold "
                             multiline
                             variant="outlined"
+                            onChange={e => setItemSold(e.target.value)}
                         />
                     </Grid>
                 </Grid>
@@ -229,19 +276,23 @@ const Additem = props => {
                     <Grid item xs={4}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="trending"          
+                            id="trending"
+                            value={trending}  
                             placeholder="Trending "
                             multiline
                             variant="outlined"
+                            onChange={e => setTrending(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="inStock"          
+                            id="inStock"
+                            value={inStock}    
                             placeholder="In stock"
                             multiline
                             variant="outlined"
+                            onChange={e => setInStock(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4} className="add_fieldCol">
@@ -253,11 +304,13 @@ const Additem = props => {
                     <Grid item xs={12}   className="add_fieldCol">
                         <TextField
                             className="add_textField"
-                            id="description"          
+                            id="description"
+                            value={description}    
                             placeholder="Description"
                             rows="5"
                             multiline
                             variant="outlined"
+                            onChange={e => setDescription(e.target.value)}
                         />
                     </Grid>
                 </Grid>
