@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Grid } from "@material-ui/core";
-import MUIDataTable from "mui-datatables";
-import Table  from '@material-ui/core/Table';
 import  TextField from '@material-ui/core/TextField';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
@@ -34,34 +26,55 @@ const Additem = props => {
     const[trending, setTrending] = useState();
     const[inStock, setInStock] = useState();
     const[description, setDescription] = useState();
+    const handleSubmit = () => {
+        // const data = new FormData();
+        // const payload = {
+        //     id: parseInt(id),
+        //     price: parseInt(price),
+        //     soloPrice: parseInt(soloPrice),
+        //     groupPrice: parseInt(groupPrice),
+        //     unitSize: unitSize,
+        //     name: name,
+        //     sellerName: sellerName,
+        //     sellerLocation: sellerLocation,
+        //     category: category,
+        //     quantity: parseInt(quantity),
+        //     rating: rating,
+        //     ratingCount: parseInt(ratingCount),
+        //     itemCondition: itemCondition,
+        //     merchantSuccessTransaction: transactionStatus,
+        //     merchantItemSold: itemSold,
+        //     trending: parseInt(trending),
+        //     inStock: inStock,
+        //     description: description,
+        // }
+        // data.append("myjsonkey", JSON.stringify(payload));
 
-    const handleSubmit = (e) => {
+        const body = new FormData();
+        
+        body.append('id', parseInt(id));
+        body.append('price', parseInt(price));
+        body.append('soloPrice', parseInt(soloPrice));
+        body.append('groupPrice', parseInt(groupPrice));
+        body.append('unitSize', unitSize);
+        body.append('name', name);
+        body.append('sellerName', sellerName);
+        body.append('sellerLocation', sellerLocation);
+        body.append('category', category);
+        body.append('quantity', parseInt(quantity));
+        body.append('rating', rating);
+        body.append('ratingCount', parseInt(ratingCount));
+        body.append('itemCondition', itemCondition);
+        body.append('merchantSuccessTransaction', transactionStatus);
+        body.append('merchantItemSold', itemSold);
+        body.append('trending', parseInt(trending));
+        body.append('inStock', inStock);
+        body.append('description', description);
+
         debugger
-        var data = new FormData();
-        const payload = {
-            id: id,
-            price: price,
-            soloPrice: soloPrice,
-            groupPrice: groupPrice,
-            unitSize: unitSize,
-            name: name,
-            sellerName: sellerName,
-            sellerLocation: sellerLocation,
-            category: category,
-            quantity: quantity,
-            rating: rating,
-            ratingCount: ratingCount,
-            itemCondition: itemCondition,
-            transactionStatus: transactionStatus,
-            merchantItemSold: itemSold,
-            trending: trending,
-            inStock: inStock,
-            description: description,
-        }
-        data.append("myjsonkey", JSON.stringify(payload));
         fetch('http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item',{
             method: 'POST',
-            body: data,
+            body: body,
         })
         .then(function(response) {
             return response.json()
