@@ -56,19 +56,14 @@ const Additem = props => {
     return(
         <>
         <div  style={{position: 'relative'}}>
-          
-            
             <Link to="/app/tables" style={{ color:'#e65a28', position: 'absolute' }} >
             <ArrowBackIosIcon/>
             </Link>
             <Grid container  >
-            
               <Grid item xs={12} style={{paddingLeft: '20px'}}>
               <PageTitle  title="Add new item" />
               </Grid>
-
             </Grid>
-            
         </div>
         <TableContainer className="tabelContainer" style={{padding:"50px 20px"}} >
         {/* first grid */}
