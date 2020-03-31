@@ -98,6 +98,7 @@ export default function Tables(props) {
                 }}
               >
                 {headCell.label}
+                {headCell.numeric === true ? <TableSortLabel/> : ''}
               </TableCell>
         ))}
               </TableRow>

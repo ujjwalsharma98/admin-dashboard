@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
+import Select from '@material-ui/core/Select';
 import Avatar from '@material-ui/core/Avatar';
 // import FontIcon from 'material-ui/FontIcon';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -85,14 +86,22 @@ export default function Header(props) {
               >
                 <ArrowDropDownIcon/>
               </Icon > */}
-              <Dropdown>
+              {/* <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   <ArrowDropDownIcon/>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={()=> console.log("Props>>>", props)}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem onClick={() => {
+                  console.log("Logged out")
+                }}>Logout</MenuItem>
+              </Select>
               {/* <Menu
                 id="simple-menu"
                 anchorEl={this.state.anchorEl}
