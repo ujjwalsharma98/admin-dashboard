@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
 import AddIcon from '@material-ui/icons/Add';
+import { useHistory } from "react-router-dom";
 
 import { API_URL } from "../../Services"
 // components
@@ -33,6 +34,7 @@ const headCells = [
 ];
 
 export default function Tables(props) {
+  const history = useHistory();
   const [datatableData, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = React.useState(0);
@@ -74,6 +76,14 @@ export default function Tables(props) {
     setData(result.payload);
     setIsLoading(false);
   };
+
+  const getItemById = (id) => {
+    history.push("/app/manage/items/update/" + id);
+  }
+
+  const viewDetail = (id) => {
+    history.push("/app/manage/items/detail/" + id);
+  }
 
   useEffect(() => {
     fetchData(url);
@@ -119,7 +129,7 @@ export default function Tables(props) {
                         <TableCell>{element.rating}</TableCell>
                         <TableCell>{element.itemCondition}</TableCell>
                         <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-                        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon" /> <img src={EditImg} alt="logo" className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
+                        <TableCell><img src={DeatilIcon} alt="logo" onClick={() => { viewDetail(element.id) }} className="actionIcon" /> <img src={EditImg} alt="logo" onClick={() => { getItemById(element.id) }} className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

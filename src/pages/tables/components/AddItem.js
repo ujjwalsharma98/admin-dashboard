@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 import { Grid } from "@material-ui/core";
 import TextField from '@material-ui/core/TextField';
 import TableContainer from '@material-ui/core/TableContainer';
-import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-
 import PageTitle from "../../../components/PageTitle";
 const Additem = props => {
     const history = useHistory();
@@ -30,10 +28,66 @@ const Additem = props => {
     const [inStock, setInStock] = useState("");
     const [description, setDescription] = useState("");
     const [images, setImages] = useState("");
+    const [tokopedia_url, setTokopediaUrl] = useState("");
+    const [merchantInfo, setMerchantInfo] = useState("");
+    const [orderInfo, setOrderInfo] = useState("");
+    const [delivery_options, setDeliveryOptions] = useState("");
+    const [weight, setWeight] = useState("");
+    const [disable, setDisabled] = useState("");
+    const itemId = parseInt(props.match.params.id);
+    const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item/' + itemId;
+    if (itemId > 0 && props.match.isExact) {
+        const index = props.match.url.indexOf("/items/detail");
+        if (index > 0) {
+            setDisabled(true);
+        }
+        props.match.isExact = false;
+        axios.get(apiUrl)
+            .then(function (response) {
+                if (response && response.data.payload) {
+                    const res = response.data.payload;
+                    setId(res.id);
+                    setPrice(res.price);
+                    setSoloPrice(res.soloPrice);
+                    setGroupPrice(res.groupPrice);
+                    setUnitSize(res.unitSize);
+                    setName(res.name);
+                    setSellerName(res.sellerName);
+                    setSellerLocation(res.sellerLocation);
+                    setCategory(res.category);
+                    setQuantity(res.quantity);
+                    setRating(res.rating);
+                    setRatingCount(res.ratingCount);
+                    setItemCondition(res.itemCondition);
+                    setTransactionStatus(res.merchantSuccessTransaction);
+                    setItemSold(res.merchantItemSold);
+                    setTrending(res.trending);
+                    setInStock(res.inStock);
+                    setDescription(res.description.description);
+                    setTokopediaUrl(res.description.tokopedia_url);
+                    setMerchantInfo(res.description.merchantInfo);
+                    setOrderInfo(res.description.orderInfo);
+                    setDeliveryOptions(res.description.delivery_options);
+                    setWeight(res.description.weight);
+                    setImages(res.images.toString());
+                }
+            }).catch(error => {
+                alert(error);
+            });
+    }
+
     const handleSubmit = (event) => {
-        const imagesUrl = images.split(',')
+        const imagesUrl = images.split(',');
+        const descriptionObj = {
+            tokopedia_url: tokopedia_url,
+            merchantInfo: merchantInfo,
+            orderInfo: orderInfo,
+            delivery_options: delivery_options,
+            weight: weight,
+            description: description,
+        };
         const payload = {
-            id: id ? parseInt(price) : null,
+            id: id ? id : null,
             price: parseInt(price),
             unitSize: unitSize,
             name: name,
@@ -47,16 +101,20 @@ const Additem = props => {
             merchantSuccessTransaction: transactionStatus,
             merchantItemSold: itemSold,
             trending: parseInt(trending),
-            inStock: inStock,
+            inStock: true,
             soloPrice: parseInt(soloPrice),
             groupPrice: parseInt(groupPrice),
-            description: description,
+            description: descriptionObj,
             images: imagesUrl,
         }
         const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item'
         axios.post(apiUrl, payload)
             .then(function (response) {
-                history.push("/app/manage/items");
+                if (response) {
+                    history.push("/app/manage");
+                }
+            }).catch(error => {
+                alert(error);
             });
     }
 
@@ -73,9 +131,14 @@ const Additem = props => {
                 </Grid>
             </div>
             <TableContainer className="tabelContainer" style={{ padding: "50px 20px" }} >
-                {/* first grid */}
                 <form onSubmit={() => handleSubmit()}>
-                    <button type="submit">Submit</button>
+                    <Grid container>
+                        <Grid item xs={12} style={{ paddingLeft: '10px' }}>
+                            <button disabled={disable} className="btn btn-lg btn-primary"  type="submit">
+                                Save
+                            </button>
+                        </Grid>
+                    </Grid>
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol" hidden>
                             <TextField
@@ -89,6 +152,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="price"
                                 value={price}
@@ -101,6 +165,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="soloPrice"
                                 required
@@ -111,12 +176,24 @@ const Additem = props => {
                                 onChange={e => setSoloPrice(e.target.value)}
                             />
                         </Grid>
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="trending"
+                                value={trending}
+                                placeholder="Trending "
+                                type="number"
+                                required
+                                variant="outlined"
+                                onChange={e => setTrending(e.target.value)}
+                            />
+                        </Grid>
                     </Grid>
-                    {/* second grid */}
-
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="groupPrice"
                                 value={groupPrice}
@@ -129,6 +206,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="unitPrice"
                                 value={unitSize}
@@ -141,6 +219,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="name"
                                 value={name}
@@ -151,11 +230,10 @@ const Additem = props => {
                             />
                         </Grid>
                     </Grid>
-                    {/* third grid */}
-
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="sellerName"
                                 value={sellerName}
@@ -166,6 +244,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="sellerLocation"
                                 value={sellerLocation}
@@ -176,6 +255,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="category"
                                 value={category}
@@ -186,11 +266,10 @@ const Additem = props => {
                             />
                         </Grid>
                     </Grid>
-                    {/* fourth grid */}
-
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="quantity"
                                 value={quantity}
@@ -202,6 +281,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="rating"
                                 value={rating}
@@ -213,6 +293,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="ratingCount"
                                 value={ratingCount}
@@ -224,11 +305,10 @@ const Additem = props => {
                         </Grid>
                     </Grid>
 
-                    {/* fifth grid */}
-
                     <Grid container className="add_itemContainer"  >
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="itemCondition"
                                 value={itemCondition}
@@ -239,6 +319,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="transactionStatus"
                                 value={transactionStatus}
@@ -249,6 +330,7 @@ const Additem = props => {
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="itemSold"
                                 value={itemSold}
@@ -258,55 +340,10 @@ const Additem = props => {
                             />
                         </Grid>
                     </Grid>
-                    {/* sixth grid */}
-                    {/* first grid */}
-                    <Grid container className="add_itemContainer" >
-                        <Grid item xs={4} className="add_fieldCol">
-                            <TextField
-                                className="add_textField"
-                                id="trending"
-                                value={trending}
-                                placeholder="Trending "
-                                type="number"
-                                required
-                                variant="outlined"
-                                onChange={e => setTrending(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={4} className="add_fieldCol">
-                            <input
-                                type="checkbox"
-                                id="inStock"
-                                value={inStock}
-                                placeholder="In stock"
-                                required
-                                onChange={e => setInStock(e.target.value)}
-                            />
-                            <label>In stock</label>
-                        </Grid>
-                        <Grid item xs={4} className="add_fieldCol">
-                        </Grid>
-                    </Grid>
-
-                    {/* description container */}
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={12} className="add_fieldCol">
                             <TextField
-                                className="add_textField"
-                                id="description"
-                                value={description}
-                                placeholder="Description"
-                                rows="5"
-                                multiline
-                                required
-                                variant="outlined"
-                                onChange={e => setDescription(e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container className="add_itemContainer" >
-                        <Grid item xs={12} className="add_fieldCol">
-                            <TextField
+                                disabled={disable}
                                 className="add_textField"
                                 id="images"
                                 value={images}
@@ -321,7 +358,93 @@ const Additem = props => {
                     </Grid>
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={12} className="add_fieldCol">
-                            <Button variant="outlined" className="additem_btn" >Browse Image</Button>
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="description"
+                                value={description}
+                                placeholder="Description"
+                                rows="5"
+                                multiline
+                                required
+                                variant="outlined"
+                                onChange={e => setDescription(e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container className="add_itemContainer"  >
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="tokopedia_url"
+                                value={tokopedia_url}
+                                placeholder="Tokopedia url"
+                                variant="outlined"
+                                onChange={e => setTokopediaUrl(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="merchantInfo"
+                                value={merchantInfo}
+                                placeholder="Merchant info"
+                                variant="outlined"
+                                onChange={e => setMerchantInfo(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="orderInfo"
+                                value={orderInfo}
+                                placeholder="Merchant item sold "
+                                variant="outlined"
+                                onChange={e => setOrderInfo(e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container className="add_itemContainer"  >
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="delivery_options"
+                                value={delivery_options}
+                                placeholder="Delivery options"
+                                variant="outlined"
+                                onChange={e => setDeliveryOptions(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={4} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="weight"
+                                value={weight}
+                                placeholder="Weight"
+                                variant="outlined"
+                                onChange={e => setWeight(e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+
+                    <Grid container className="add_itemContainer" >
+                        <Grid item xs={4} className="add_fieldCol">
+                            <input
+                                disabled={disable}
+                                type="checkbox"
+                                id="inStock"
+                                value={inStock}
+                                required
+                                onChange={e => setInStock(e.target.value)}
+                            />
+                            <label>In stock</label>
+                        </Grid>
+                        <Grid item xs={4} className="add_fieldCol">
                         </Grid>
                     </Grid>
                 </form>

@@ -201,6 +201,8 @@ function Layout(props) {
             <Route path="/app/manage/items" component={Tables} exact />
             <Route path="/app/manage/order" component={Dashboard} exact />
             <Route path="/app/manage/items/additem" component={Additem} exact />
+            <Route path="/app/manage/items/update/:id" component={Additem} exact />
+            <Route path="/app/manage/items/detail/:id" component={Additem} exact />
             <Route
               exact
               path="/app/ui"
