@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import PageTitle from "../../../components/PageTitle";
 const Additem = props => {
+    const stocks = ["No", "Yes"]
     const history = useHistory();
     const [id, setId] = useState("");
     const [price, setPrice] = useState("");
@@ -62,7 +63,7 @@ const Additem = props => {
                     setTransactionStatus(res.merchantSuccessTransaction);
                     setItemSold(res.merchantItemSold);
                     setTrending(res.trending);
-                    setInStock(res.inStock);
+                    setInStock(res.inStock == true ? 'Yes' : 'No');
                     setDescription(res.description.description);
                     setTokopediaUrl(res.description.tokopedia_url);
                     setMerchantInfo(res.description.merchantInfo);
@@ -101,7 +102,7 @@ const Additem = props => {
             merchantSuccessTransaction: transactionStatus,
             merchantItemSold: itemSold,
             trending: parseInt(trending),
-            inStock: true,
+            inStock: inStock == 'Yes' ? true : false,
             soloPrice: parseInt(soloPrice),
             groupPrice: parseInt(groupPrice),
             description: descriptionObj,
@@ -134,7 +135,7 @@ const Additem = props => {
                 <form onSubmit={() => handleSubmit()}>
                     <Grid container>
                         <Grid item xs={12} style={{ paddingLeft: '10px' }}>
-                            <button disabled={disable} className="btn btn-lg btn-primary"  type="submit">
+                            <button disabled={disable} className="btn btn-lg btn-primary" type="submit">
                                 Save
                             </button>
                         </Grid>
@@ -430,21 +431,13 @@ const Additem = props => {
                                 onChange={e => setWeight(e.target.value)}
                             />
                         </Grid>
-                    </Grid>
-
-                    <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol">
-                            <input
-                                disabled={disable}
-                                type="checkbox"
-                                id="inStock"
-                                value={inStock}
-                                required
-                                onChange={e => setInStock(e.target.value)}
-                            />
-                            <label>In stock</label>
-                        </Grid>
-                        <Grid item xs={4} className="add_fieldCol">
+                            <div className="form-group">
+                                <select class="form-control add_textField" onChange={e => setInStock(e.target.value)} disabled={disable} value={inStock}>
+                                    <option value={stocks[0]}>{stocks[0]}</option>
+                                    <option value={stocks[1]}>{stocks[1]}</option>
+                                </select>
+                            </div>
                         </Grid>
                     </Grid>
                 </form>
