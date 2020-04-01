@@ -1,6 +1,6 @@
-import React, {useEffect, useState, makeStyles} from "react";
+import React, { useEffect, useState, makeStyles } from "react";
 import { Link } from 'react-router-dom';
-import { Grid , IconButton , Typography} from "@material-ui/core";
+import { Grid, IconButton, Typography } from "@material-ui/core";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,7 +16,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import { API_URL } from "../../Services"
 // components
-import PageTitle from "../../components/PageTitle";  
+import PageTitle from "../../components/PageTitle";
 
 const headCells = [
   { id: 'id', numeric: true, disablePadding: false, label: 'Id' },
@@ -40,8 +40,8 @@ export default function Tables(props) {
   const [sortBy, setSortBy] = useState('id')
   const [sortOrder, setSortOrder] = useState('ASC')
   const [url, setUrl] = useState(`${API_URL}/api/v1/int-tool/item?page=0&size=${rowsPerPage}&sort=${sortBy},${sortOrder}`);
-  
-  const fetchLimit = rowsPerPage*(page+2)
+
+  const fetchLimit = rowsPerPage * (page + 2)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -58,21 +58,21 @@ export default function Tables(props) {
   };
 
   const changeSorting = headCell => {
-    if(headCell.numeric === true){
+    if (headCell.numeric === true) {
       setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${fetchLimit}&sort=${headCell.id},${sortOrder}`)
       fetchData(url);
     }
-    else{
+    else {
       console.log("Check for more cases")
     }
   }
 
   const fetchData = async () => {
     setIsLoading(true);
-     const response = await fetch(url);
-     const result   = await response.json(); 
-     setData(result.payload);
-     setIsLoading(false);
+    const response = await fetch(url);
+    const result = await response.json();
+    setData(result.payload);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -81,78 +81,78 @@ export default function Tables(props) {
   return (
     <>
       <PageTitle title="Items" />
-      <Grid container spacing={4}> 
+      <Grid container spacing={4}>
         <Grid item xs={12}>
-        {isLoading ? (
-        <h1>Loading ...</h1>
-      ) : (
-        <TableContainer className="tabelContainer" >
-          <Table className="tabel" style={{zoom:'70%'}}>
-            <TableHead>
-              <TableRow className="tabelHead_row">
-              {headCells.map((headCell) => (
-              <TableCell
-                key={headCell.id}
-                onClick={() => {
-                  changeSorting(headCell)
-                }}
-              >
-                {headCell.label}
-                {headCell.numeric === true ? <TableSortLabel/> : ''}
-              </TableCell>
-        ))}
-              </TableRow>
-            </TableHead>
-            <TableBody className="tabelBody">
-              {(rowsPerPage > 0
-              ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              : datatableData
-              ).map((element) => (
-                <TableRow className="tabelBody_row" >
-                  <TableCell>{element.id}</TableCell>
-                  <TableCell>{element.name}</TableCell>
-                  <TableCell>{element.sellerName}</TableCell>
-                  <TableCell>{element.category}</TableCell>
-                  <TableCell><a href="#">See more</a></TableCell>
-                  <TableCell>{element.quantity}</TableCell>
-                  <TableCell>{element.price}</TableCell>
-                  <TableCell>{element.rating}</TableCell>
-                  <TableCell>{element.itemCondition}</TableCell>
-                  <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-                  <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon"/> <img src={EditImg} alt="logo" className="actionIcon" style={{marginLeft: '5px'}}  /> </TableCell>
-                </TableRow>
-              ))}        
-            </TableBody>       
-          </Table>
-          <Grid container >
-          <Grid item xs={9}>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25, 50, { label: 'All', value: -1 }]}
-            colSpan={3}
-            count={-1}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            SelectProps={{
-              inputProps: { 'aria-label': 'rows per page' },
-              native: true,
-            }}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          /></Grid>
-          <Grid item xs={3} className="" >
-          <div style={{display:'flex', flexDirection:'column' , alignSelf: 'center' , alignItems: 'center' }}>
-            <Link to="/app/manage/items/additem" style={{textDecoration:'none'}}>
-              <IconButton style={{   backgroundColor: '#e65a28', color: 'white'}}>
-                <AddIcon/>
-              </IconButton>
-            </Link><Typography>Add Item</Typography>
-          </div>
-            </Grid>
-          </Grid>
-        </TableContainer>
-        )}
-        </Grid> 
+          {isLoading ? (
+            <h1>Loading ...</h1>
+          ) : (
+              <TableContainer className="tabelContainer" >
+                <Table className="tabel" style={{ zoom: '70%' }}>
+                  <TableHead>
+                    <TableRow className="tabelHead_row">
+                      {headCells.map((headCell) => (
+                        <TableCell
+                          key={headCell.id}
+                          onClick={() => {
+                            changeSorting(headCell)
+                          }}
+                        >
+                          {headCell.label}
+                          {headCell.numeric === true ? <TableSortLabel /> : ''}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody className="tabelBody">
+                    {(rowsPerPage > 0
+                      ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : datatableData
+                    ).map((element) => (
+                      <TableRow className="tabelBody_row" >
+                        <TableCell>{element.id}</TableCell>
+                        <TableCell>{element.name}</TableCell>
+                        <TableCell>{element.sellerName}</TableCell>
+                        <TableCell>{element.category}</TableCell>
+                        <TableCell><a href="#">See more</a></TableCell>
+                        <TableCell>{element.quantity}</TableCell>
+                        <TableCell>{element.price}</TableCell>
+                        <TableCell>{element.rating}</TableCell>
+                        <TableCell>{element.itemCondition}</TableCell>
+                        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
+                        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon" /> <img src={EditImg} alt="logo" className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+                <Grid container >
+                  <Grid item xs={9}>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25, 50, { label: 'All', value: -1 }]}
+                      colSpan={3}
+                      count={-1}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{
+                        inputProps: { 'aria-label': 'rows per page' },
+                        native: true,
+                      }}
+                      onChangePage={handleChangePage}
+                      onChangeRowsPerPage={handleChangeRowsPerPage}
+                    /></Grid>
+                  <Grid item xs={3} className="" >
+                    <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
+                      <Link to="/app/manage/items/additem" style={{ textDecoration: 'none' }}>
+                        <IconButton style={{ backgroundColor: '#e65a28', color: 'white' }}>
+                          <AddIcon />
+                        </IconButton>
+                      </Link><Typography>Add Item</Typography>
+                    </div>
+                  </Grid>
+                </Grid>
+              </TableContainer>
+            )}
+        </Grid>
       </Grid>
     </>
-  ); 
+  );
 }
