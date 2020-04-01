@@ -8,9 +8,9 @@ body{
     height: 70px;
 }
 .menuLogo {
-    width: 150px;
-    max-width: 100%;
-    padding-left: 47px;
+    max-width: 200px;
+    /* padding-left: 47px; */
+    width: auto;
 }
 
 .main_heading{
@@ -30,6 +30,7 @@ body{
     background-color: #f4f5f7;
     border-right: 2px solid white;
     border-bottom: none;
+    font-size:1.2rem;
 }
 .tabelHead_row th:last-child  {
     border-right: none;
@@ -63,6 +64,7 @@ body{
     border-bottom: none; 
     font-weight: 500; 
     color: #555555;  
+    font-size: 1.2rem;
 }
 .actionIcon {
     width: 25px;
@@ -180,8 +182,6 @@ body{
   font-size: 21px!important;
   font-weight: 500!important;
   letter-spacing: 1px!important;
-
-  
   width: 75%;
 }
 .sign_arrow{
@@ -307,8 +307,17 @@ body{
     cursor: pointer;
 
 }
+.sidebar_one_menu.main_top .menu_list p {
+    font-size: 1rem!important;
+    font-weight: normal!important;
+}
+.dropIcon .MuiInput-underline:before {
+    display:none!important;
+}
 
-
+.dropIcon div#demo-simple-select {
+    padding: 0;
+}
 .top_part {
     position: absolute;
     top: 0;
@@ -341,10 +350,9 @@ body{
     
 }
 .scroll_sidebar{
-    padding-left: 20px;
-    padding-top: 60px;
-
-
+    padding-left: 1rem;
+    padding-top: 6rem;
+    display:none;
 }
 .scroll_sidebar .menu_list{
     display: flex;
@@ -359,6 +367,18 @@ body{
 .scroll_sidebar .menu_list:hover{
  
     background-color: white
+}
+.scroll_sidebar>div{
+    margin-bottom: .5rem;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+.sidebar_one_menu.main_top > div {
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 0;
 }
 .this_address{
     display: flex;
@@ -381,8 +401,8 @@ body{
 .scroll_btn {
     /* background-color: red; */
     position: absolute;
-    top: 50px;
-    right: -23px;
+    top: 3.6rem;
+    right: -15px;
 }
 .scroll_btn .icon_clik{
     width: 30px;
@@ -395,4 +415,7 @@ body{
     align-items: center;
     align-items: center;
     text-align: center;
+}
+.page_title_content .srch_icon{
+    margin-right: -3px;
 }
