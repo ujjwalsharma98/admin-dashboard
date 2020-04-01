@@ -64,7 +64,7 @@ const Additem = props => {
     return (
         <>
             <div style={{ position: 'relative' }}>
-                <Link to="/app/tables" style={{ color: '#e65a28', position: 'absolute' }} >
+                <Link to="/app/manage/items" style={{ color: '#e65a28', position: 'absolute' }} >
                     <ArrowBackIosIcon />
                 </Link>
                 <Grid container  >
@@ -78,12 +78,13 @@ const Additem = props => {
                 <form onSubmit={() => handleSubmit()}>
                     <button type="submit">Submit</button>
                     <Grid container className="add_itemContainer" >
-                        <Grid item xs={4} className="add_fieldCol" hidden>
+                        <Grid item xs={4} className="add_fieldCol">
                             <TextField
                                 className="add_textField"
                                 id="id"
                                 placeholder="Id"
                                 value={id}
+                                multiline
                                 variant="outlined"
                                 onChange={e => setId(e.target.value)}
                             />
@@ -91,23 +92,21 @@ const Additem = props => {
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
                                 className="add_textField"
-                                type="number"
                                 id="price"
                                 value={price}
-                                required
                                 placeholder="Price"
+                                multiline
                                 variant="outlined"
                                 onChange={e => setPrice(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                             <TextField
-                                type="number"
                                 className="add_textField"
                                 id="soloPrice"
-                                required
                                 placeholder="Solo Price"
                                 value={soloPrice}
+                                multiline
                                 variant="outlined"
                                 onChange={e => setSoloPrice(e.target.value)}
                             />
@@ -120,10 +119,9 @@ const Additem = props => {
                             <TextField
                                 className="add_textField"
                                 id="groupPrice"
-                                type="number"
                                 value={groupPrice}
-                                required
                                 placeholder="Group Price"
+                                multiline
                                 variant="outlined"
                                 onChange={e => setGroupPrice(e.target.value)}
                             />
@@ -134,7 +132,7 @@ const Additem = props => {
                                 id="unitPrice"
                                 value={unitSize}
                                 placeholder="Unit Size"
-                                required
+                                multiline
                                 variant="outlined"
                                 onChange={e => setUnitSize(e.target.value)}
                             />
@@ -145,7 +143,7 @@ const Additem = props => {
                                 id="name"
                                 value={name}
                                 placeholder="Name"
-                                required
+                                multiline
                                 variant="outlined"
                                 onChange={e => setName(e.target.value)}
                             />
@@ -182,7 +180,6 @@ const Additem = props => {
                                 id="category"
                                 value={category}
                                 placeholder="Category"
-                                required
                                 multiline
                                 variant="outlined"
                                 onChange={e => setCategory(e.target.value)}
@@ -198,7 +195,7 @@ const Additem = props => {
                                 id="quantity"
                                 value={quantity}
                                 placeholder="Quantity"
-                                type="number"
+                                multiline
                                 variant="outlined"
                                 onChange={e => setQuantity(e.target.value)}
                             />
@@ -220,7 +217,7 @@ const Additem = props => {
                                 id="ratingCount"
                                 value={ratingCount}
                                 placeholder="Rating Count"
-                                type="number"
+                                multiline
                                 variant="outlined"
                                 onChange={e => setRatingCount(e.target.value)}
                             />
@@ -272,26 +269,28 @@ const Additem = props => {
                                 className="add_textField"
                                 id="trending"
                                 value={trending}
-                                required
                                 placeholder="Trending "
-                                type="number"
+                                multiline
                                 variant="outlined"
                                 onChange={e => setTrending(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
-                            <label>In stock</label>
-                            <input
-                                type="checkbox"
+                            <TextField
+                                className="add_textField"
                                 id="inStock"
                                 value={inStock}
-                                required
+                                placeholder="In stock"
+                                multiline
+                                variant="outlined"
                                 onChange={e => setInStock(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={4} className="add_fieldCol">
                         </Grid>
                     </Grid>
+
+                    {/* description container */}
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={12} className="add_fieldCol">
                             <TextField
@@ -301,24 +300,8 @@ const Additem = props => {
                                 placeholder="Description"
                                 rows="5"
                                 multiline
-                                required
                                 variant="outlined"
                                 onChange={e => setDescription(e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container className="add_itemContainer" >
-                        <Grid item xs={12} className="add_fieldCol">
-                            <TextField
-                                className="add_textField"
-                                id="description"
-                                value={images}
-                                placeholder="Images"
-                                required
-                                rows="4"
-                                multiline
-                                variant="outlined"
-                                onChange={e => setImages(e.target.value)}
                             />
                         </Grid>
                     </Grid>

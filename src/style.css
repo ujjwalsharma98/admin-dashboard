@@ -360,6 +360,17 @@ body{
  
     background-color: white
 }
+.this_address{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 5px 5px 8px;
+    /* background-color: red; */
+    border-top-left-radius: 30px!important;
+    border-bottom-left-radius: 30px!important;
+    /* padding: 12px 3px 12px 22px!important; */
+    background-color: white
+}
 .scroll_item {
     padding-right: 10px;
 }
