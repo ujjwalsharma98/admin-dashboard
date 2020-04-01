@@ -85,7 +85,7 @@ const Additem = props => {
     return(
         <>
         <div  style={{position: 'relative'}}>
-            <Link to="/app/tables" style={{ color:'#e65a28', position: 'absolute' }} >
+            <Link to="/app/manage/items" style={{ color:'#e65a28', position: 'absolute' }} >
             <ArrowBackIosIcon/>
             </Link>
             <Grid container  >

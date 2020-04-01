@@ -66,7 +66,7 @@ function Layout(props) {
   var layoutState = useLayoutState();
   var classes = useStyles();
   const [showSidebarTwo, setSidebarTwo] = useState(true);
-  
+
   const toggle  = () => {
     var x = document.getElementById("padding_side");
     if (x.style.width == "20px") {
@@ -93,24 +93,17 @@ function Layout(props) {
     //   }
   }
 
-  const SidebarViewTwo = () => {
-    if(showSidebarTwo === true){
-      setSidebarTwo(false)
-    }else if(showSidebarTwo === false){
-      setSidebarTwo(true)
-    }
-  }
-
   return (
     <div className={classes.root}>
         <>
           <Header history={props.history} />
-           
            <div className="main_sidebar" style={{display:'flex'}}>
              <div className="fixed_sidebar" style={{width:'70px', position:'relative'}}>
                <div className="top_part">
                <div className="sidebar_one_menu main_top">
-               <div  className="menu_list">
+               <div  className="menu_list" onClick={()=>{
+                 props.history.replace('/app/manage/items')
+               }}>
                  <div classnames="menu_list_item">
                  <img src={ManageImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
                  </div>
@@ -150,28 +143,45 @@ function Layout(props) {
               </div>
              <div  id="padding_side" className="sidebar_scroll" style={{width:'20px'}}>
               <div className="scroll_sidebar">
-              <div className="menu_list">
-                 <div className="scroll_item">
-                  <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
-                  </div>
-                  <Typography className="scroll_item_text">Order</Typography>                 
-                </div>
 
-               <div className="menu_list">
+              <div className={props.history.location && props.history.location.pathname === '/app/manage/items' ? "this_address" : "menu_list"}
+                onClick={()=>{
+                  props.history.replace('/app/manage/items')
+                }}
+              >
                  <div className="scroll_item">
                  <img src={ItemImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
                  </div>
                  <Typography className="scroll_item_text">Items</Typography>                 
                </div>
 
-               <div className="menu_list">
+                <div className={props.history.location && props.history.location.pathname === '/app/manage/order' ? "this_address" : "menu_list"}
+                  onClick={()=>{
+                    props.history.replace('/app/manage/order')
+                  }}
+                >
+                 <div className="scroll_item">
+                  <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                  </div>
+                  <Typography className="scroll_item_text">Order</Typography>                 
+                </div>
+
+               <div className={props.history.location && props.history.location.pathname === '/app/manage/users' ? "this_address" : "menu_list"}
+                  onClick={()=>{
+                    props.history.replace('/app/manage/users')
+                  }}
+               >
                  <div className="scroll_item">
                  <img src={UserImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
                  </div>
-                 <Typography className="scroll_item_text">Users</Typography>                 
+                 <Typography className="scroll_item_text">Users</Typography>               
                </div>
 
-               <div className="menu_list">
+               <div className={props.history.location && props.history.location.pathname === '/app/manage/deals' ? "this_address" : "menu_list"}
+                  onClick={()=>{
+                    props.history.replace('/app/manage/deals')
+                  }}
+               >
                  <div className="scroll_item">
                  <img src={DealsImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
                  </div>
@@ -195,15 +205,19 @@ function Layout(props) {
           >
             <div className={classes.fakeToolbar} />
             <Switch>
-              <Route path="/app/dashboard" render={() => <Redirect to="/app/tables" />}/> 
-              <Route path="/app/tables" component={Tables} exact/>
-              <Route path="/app/tables/additem" component={Additem} exact /> 
+              <Route path="/app/manage/items" component={Tables} exact/>
+              <Route path="/app/manage/order" component={Dashboard} exact/>
+              <Route path="/app/manage/items/additem" component={Additem} exact />
               <Route
                 exact
                 path="/app/ui"
                 render={() => <Redirect to="/app/ui/icons" />}
               />
               <Route path="/app/ui/charts" component={Charts} />
+              <Redirect
+                from="/"
+                to="/app/manage/items"
+              />
             </Switch>
           </div>
         </>
