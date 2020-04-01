@@ -29,8 +29,8 @@ import useStyles from "./styles";
 // components
 import Header from "../Header";
 import Sidebar from "../Sidebar";
-import ParentSidebar from '../ParentSideBar'
-import ChildSidebar from '../ChildSideBar'
+// import ParentSidebar from '../ParentSideBar'
+// import ChildSidebar from '../ChildSideBar'
 
 // pages
 import Dashboard from "../../pages/dashboard"; 
