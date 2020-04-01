@@ -41,7 +41,6 @@ import Charts from "../../pages/charts";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
-
 import MenuList from '@material-ui/core/MenuList';
 import ItemImg  from '../../Icons/Items_Normal.png';
 import OrderImg  from '../../Icons/Order_Normal.png';
@@ -52,12 +51,10 @@ import SettingImg  from '../../Icons/Settings_Normal.png';
 import AdminImg  from '../../Icons/Admin_Normal.png';
 import ReportsImg  from '../../Icons/Reports_Normal.png';
 // import ItemImg  from '../../Icons/Items_Normal.png';
-
 // import OrderImg  from '../../Icons/Order_Normal.png';
 // import UserImg  from '../../Icons/Users_Normal.png';
 import DealsImg  from '../../Icons/Deals_Normal.png';
 import transitions from "@material-ui/core/styles/transitions";
-
 
 const Bar = Styled.div`
   width: 20px;
@@ -69,32 +66,37 @@ function Layout(props) {
   var layoutState = useLayoutState();
   var classes = useStyles();
   const [showSidebarTwo, setSidebarTwo] = useState(true);
-const toggle  = () => {
-  var x = document.getElementById("padding_side");
-  if (x.style.width == "20px") {
-    x.style.width = "140px";
-  } else {
-    x.style.width = "20px";
+  
+  const toggle  = () => {
+    var x = document.getElementById("padding_side");
+    if (x.style.width == "20px") {
+      x.style.width = "140px";
+    } else {
+      x.style.width = "20px";
+    }
+    var y = document.getElementById("content_side");
+    if (y.style.paddingLeft == "20px") {
+      y.style.paddingLeft = "140px";
+    } else {
+      y.style.paddingLeft = "20px";
+    }
+    if(showSidebarTwo === true){
+      setSidebarTwo(false)
+    }else if(showSidebarTwo === false){
+      setSidebarTwo(true)
+    }
+    //   var c = document.getElementById("icon_rotate");
+    //   if (y.style.transform == "rotate(180deg)") {
+    //     y.style.transform = "rotate(0deg)";
+    //   } else {
+    //     y.style.transform = "rotate(180deg)";
+    //   }
   }
-  var y = document.getElementById("content_side");
-  if (y.style.paddingLeft == "20px") {
-    y.style.paddingLeft = "140px";
-  } else {
-    y.style.paddingLeft = "20px";
-  }
-//   var c = document.getElementById("icon_rotate");
-//   if (y.style.transform == "rotate(180deg)") {
-//     y.style.transform = "rotate(0deg)";
-//   } else {
-//     y.style.transform = "rotate(180deg)";
-//   }
-}
-
 
   const SidebarViewTwo = () => {
-    if(showSidebarTwo){
+    if(showSidebarTwo === true){
       setSidebarTwo(false)
-    }else{
+    }else if(showSidebarTwo === false){
       setSidebarTwo(true)
     }
   }
@@ -150,10 +152,10 @@ const toggle  = () => {
               <div className="scroll_sidebar">
               <div className="menu_list">
                  <div className="scroll_item">
-                 <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
-                 </div>
-                 <Typography className="scroll_item_text">Order</Typography>                 
-               </div>
+                  <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img"/>
+                  </div>
+                  <Typography className="scroll_item_text">Order</Typography>                 
+                </div>
 
                <div className="menu_list">
                  <div className="scroll_item">
@@ -180,17 +182,17 @@ const toggle  = () => {
               {/* <ParentSidebar/>
               {showSidebarTwo ? <ChildSidebar/> : <Bar/>} */}
               <div className="scroll_btn">
-              <div className="icon_clik" onClick={()=>{toggle()}}><ArrowForward id="icon_rotate"  style={{color:'white', transform:'rotate(180deg)' , height:'15px', width:'15px'}}/></div></div>
-                
-              </div>
+            <div className="icon_clik" onClick={()=>{toggle()}}>{showSidebarTwo === false ? 
+                  <ArrowForward id="icon_rotate"  style={{color:'white', transform:'rotate(180deg)' , height:'15px', width:'15px'}}/> : 
+                  <ArrowBack  style={{color:'white', transform:'rotate(180deg)' , height:'15px', width:'15px'}}></ArrowBack>}
+            </div></div>
+            </div>
           
           <div id="content_side" style={{paddingLeft:'20px', marginLeft:'90px' , transitions:' paddingLeft 300ms cubic-bezier(0.2, 0, 0, 1) 0s' } }
             className={classnames(classes.content, {
               [classes.contentShift]: layoutState.isSidebarOpened,
-            })}
-            
+            })} 
           >
-            
             <div className={classes.fakeToolbar} />
             <Switch>
               <Route path="/app/dashboard" render={() => <Redirect to="/app/tables" />}/> 
