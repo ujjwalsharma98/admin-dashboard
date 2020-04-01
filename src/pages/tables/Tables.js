@@ -150,7 +150,7 @@ export default function Tables(props) {
                       onChangeRowsPerPage={handleChangeRowsPerPage}
                     /></Grid>
                   <Grid item xs={3} className="" >
-                    <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-end' }}>
                       <Link to="/app/manage/items/additem" style={{ textDecoration: 'none' }}>
                         <IconButton style={{ backgroundColor: '#e65a28', color: 'white' }}>
                           <AddIcon />

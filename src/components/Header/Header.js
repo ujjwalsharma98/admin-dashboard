@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Select from '@material-ui/core/Select';
 import Avatar from '@material-ui/core/Avatar';
+import Container from '@material-ui/core/Container';
 // import FontIcon from 'material-ui/FontIcon';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Icon from '@material-ui/core/Icon';
@@ -65,20 +66,21 @@ export default function Header(props) {
 
   return (
     <AppBar position="fixed" className={classes.appBar+ " menuBar"}>
+      <Container maxWidth="xl">
       <Grid container spacing={3} style={{alignSelf:'center'}}>
         <Grid item xs={6}>
         <Toolbar className={classes.toolbar}>
           <img src={logo} alt="logo" className="menuLogo"  />
         </Toolbar>
       </Grid>
-          <Grid item xs={5} style={{alignSelf:'center',  }}>
+        <Grid item xs={6} style={{alignSelf:'center',  }}>
           <div style={{display:'flex',alignSelf: 'center', color:'black',     float: 'right'}}>    
             <Typography variant="h6" style={{color:'black',display:'flex',alignSelf: 'center'}}>
-              Hello, Prateek 
+              Hello, User 
             </Typography>
-            <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
-            
+          
             <div className="dropIcon" style={{display:'flex',alignSelf: 'center'}}>
+            <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
               {/* <Icon
                 aria-controls="simple-menu"
                 aria-haspopup="true"
@@ -124,8 +126,8 @@ export default function Header(props) {
             </Grid>
             </div>
           </Grid>
-        <Grid item xs={1}></Grid>
       </Grid>
+      </Container>
     </AppBar>
   );
 }

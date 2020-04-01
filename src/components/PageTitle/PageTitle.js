@@ -24,13 +24,13 @@ export default function PageTitle(props) {
 
   return (
     <div >
-      <Grid container style={{marginBottom:'30px', }}>
+      <Grid className="page_title_content" container style={{marginBottom:'30px', alignItems:'center', }}>
       <Grid item xs={6}>
       <Typography className="main_heading" variant="h1" size="sm">
         {props.title}
       </Typography>
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={6}>
       {/* <InputBase
         className="seach_btn"
         placeholder="Search by"><SearchIcon /></InputBase> */}
@@ -55,7 +55,6 @@ export default function PageTitle(props) {
         
         
         </Grid>
-        <Grid item xs={1}></Grid>
       </Grid>
     </div>
   );

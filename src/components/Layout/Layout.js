@@ -63,10 +63,14 @@ function Layout(props) {
 
   const toggle = () => {
     var x = document.getElementById("padding_side");
+    var p = document.querySelector("#padding_side > div");
     if (x.style.width == "20px") {
       x.style.width = "140px";
-    } else {
-      x.style.width = "20px";
+      p.style.display = "block";
+    } 
+    else {
+     x.style.width = "20px";
+     p.style.display = "none";
     }
     var y = document.getElementById("content_side");
     if (y.style.paddingLeft == "20px") {
