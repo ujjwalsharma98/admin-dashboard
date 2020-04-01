@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import Select from '@material-ui/core/Select';
 import Avatar from '@material-ui/core/Avatar';
+// import FontIcon from 'material-ui/FontIcon';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Icon from '@material-ui/core/Icon';
+
 
 import {
   AppBar,
@@ -40,59 +46,6 @@ import {
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
 
-const messages = [
-  {
-    id: 0,
-    variant: "warning",
-    name: "Jane Hew",
-    message: "Hey! How is it going?",
-    time: "9:32",
-  },
-  {
-    id: 1,
-    variant: "success",
-    name: "Lloyd Brown",
-    message: "Check out my new Dashboard",
-    time: "9:18",
-  },
-  {
-    id: 2,
-    variant: "primary",
-    name: "Mark Winstein",
-    message: "I want rearrange the appointment",
-    time: "9:15",
-  },
-  {
-    id: 3,
-    variant: "secondary",
-    name: "Liana Dutti",
-    message: "Good news from sale department",
-    time: "9:09",
-  },
-];
-
-const notifications = [
-  { id: 0, color: "warning", message: "Check out this awesome ticket" },
-  {
-    id: 1,
-    color: "success",
-    type: "info",
-    message: "What is the best way to get ...",
-  },
-  {
-    id: 2,
-    color: "secondary",
-    type: "notification",
-    message: "This is just a simple notification",
-  },
-  {
-    id: 3,
-    color: "primary",
-    type: "e-commerce",
-    message: "12 new orders has arrived today",
-  },
-];
-
 export default function Header(props) {
   var classes = useStyles();
 
@@ -108,27 +61,71 @@ export default function Header(props) {
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
+  
 
   return (
     <AppBar position="fixed" className={classes.appBar+ " menuBar"}>
       <Grid container spacing={3} style={{alignSelf:'center'}}>
         <Grid item xs={6}>
         <Toolbar className={classes.toolbar}>
-      <img src={logo} alt="logo" className="menuLogo"  />
- 
-      
-      </Toolbar>
+          <img src={logo} alt="logo" className="menuLogo"  />
+        </Toolbar>
+      </Grid>
+          <Grid item xs={5} style={{alignSelf:'center',  }}>
+          <div style={{display:'flex',alignSelf: 'center', color:'black',     float: 'right'}}>    
+            <Typography variant="h6" style={{color:'black',display:'flex',alignSelf: 'center'}}>
+              Hello, Prateek 
+            </Typography>
+            <Avatar  alt="Account name" src="/static/images/avatar/1.jpg" style={{margin: '0px 8px'}} />
+            
+            <div className="dropIcon" style={{display:'flex',alignSelf: 'center'}}>
+              {/* <Icon
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                className="dropdown-btn"
+              >
+                <ArrowDropDownIcon/>
+              </Icon > */}
+              {/* <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  <ArrowDropDownIcon/>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={()=> console.log("Props>>>", props)}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> */}
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem onClick={() => {
+                  console.log("Logged out")
+                }}>Logout</MenuItem>
+              </Select>
+              {/* <Menu
+                id="simple-menu"
+                anchorEl={this.state.anchorEl}
+                keepMounted
+                open={Boolean(this.state.anchorEl)}
+                onClose={e => this.handleClose(e)}
+              >
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>My account</MenuItem>
+                <MenuItem>Logout</MenuItem>
+              </Menu> */}
+            </div>
+            </div>
+          <div style={{ minWidth: '260px', paddingTop: ' 10px' }}>
+            <Grid  container>
+              <Grid item xs={3}>
+              </Grid>
+              <Grid	item xs={9} className="profileInfo" 	style={{ alignSelf: 'center' }} >
+						</Grid>
+            </Grid>
+            </div>
           </Grid>
-          <Grid item xs={6} style={{alignSelf:'center', paddingRight:'100px', }}>
-
-          <Avatar style={{float:'right'}} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          <Button style={{float:'right'}}  color="primary" onClick={() => signOut(userDispatch, props.history)}>
-  Logout</Button>
-          </Grid>
-          </Grid>
-
-
-      
+        <Grid item xs={1}></Grid>
+      </Grid>
     </AppBar>
   );
 }
