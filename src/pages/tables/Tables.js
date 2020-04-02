@@ -13,6 +13,8 @@ import Button from '@material-ui/core/Button';
 import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
 import AddIcon from '@material-ui/icons/Add';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 import { API_URL } from "../../Services"
 // components
@@ -21,18 +23,20 @@ import PageTitle from "../../components/PageTitle";
 const headCells = [
   { id: 'id', numeric: true, disablePadding: false, label: 'Id' },
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'sellerName', numeric: false, disablePadding: true, label: 'Seller Name' },
-  { id: 'category', numeric: false, disablePadding: true, label: 'Category' },
-  { id: 'description', numeric: false, disablePadding: true, label: 'Description' },
-  { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
-  { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
-  { id: 'rating', numeric: true, disablePadding: false, label: 'Rating' },
-  { id: 'condition', numeric: false, disablePadding: true, label: 'Condition' },
-  { id: 'transaction', numeric: false, disablePadding: true, label: 'Transaction' },
+  { id: 'price', numeric: true, disablePadding: true, label: 'Price' },
+  { id: 'soloPrice', numeric: true, disablePadding: true, label: 'Solo Price' },
+  { id: 'groupPrice', numeric: false, disablePadding: true, label: 'Group Price' },
+  { id: 'unitSize', numeric: false, disablePadding: true, label: 'Unit Size' },
+  { id: 'category', numeric: true, disablePadding: false, label: 'Category' },
+  { id: 'description', numeric: true, disablePadding: false, label: 'Description' },
+  { id: 'images', numeric: true, disablePadding: false, label: 'Images' },
+  { id: 'trending', numeric: false, disablePadding: true, label: 'Trending' },
+  { id: 'inStock', numeric: false, disablePadding: true, label: 'In Stock' },
   { id: 'actions', numeric: false, disablePadding: true, label: 'Actions' },
 ];
 
 export default function Tables(props) {
+  const history = useHistory();
   const [datatableData, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = React.useState(0);
@@ -53,7 +57,7 @@ export default function Tables(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
     let pageLength = parseInt(event.target.value, 10)
-    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=${sortBy},${sortOrder}`)
+    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=${sortOrder},${sortOrder}`)
     fetchData(url);
   };
 
@@ -68,6 +72,7 @@ export default function Tables(props) {
   }
 
   const fetchData = async () => {
+    debugger;
     setIsLoading(true);
     const response = await fetch(url);
     const result = await response.json();
@@ -75,12 +80,38 @@ export default function Tables(props) {
     setIsLoading(false);
   };
 
+  const aa = async () => {
+    setIsLoading(true);
+    const value = 'M'
+    const apiUrl = API_URL + `api/v1/item/search?keyword=${value}&sort=${sortBy},${sortOrder}&page=0&size=15`;
+    axios.get(apiUrl)
+      .then(function (response) {
+        debugger;
+      }).catch(error => {
+        debugger;
+      });
+  };
+
+  const getItemById = (id) => {
+    history.push("/app/manage/items/update/" + id);
+  }
+
+  const searchItems = value => {
+    if (value) {
+      aa();
+    }
+  }
+
+  const viewDetail = (id) => {
+    history.push("/app/manage/items/detail/" + id);
+  }
+
   useEffect(() => {
     fetchData(url);
   }, [url]);
   return (
     <>
-      <PageTitle title="Items" />
+      <PageTitle searchItems={searchItems} title="Items" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           {isLoading ? (
@@ -107,19 +138,20 @@ export default function Tables(props) {
                     {(rowsPerPage > 0
                       ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       : datatableData
-                    ).map((element) => (
-                      <TableRow className="tabelBody_row" >
+                    ).map((element, index) => (
+                      <TableRow key={index} className="tabelBody_row" >
                         <TableCell>{element.id}</TableCell>
-                        <TableCell>{element.name}</TableCell>
-                        <TableCell>{element.sellerName}</TableCell>
-                        <TableCell>{element.category}</TableCell>
-                        <TableCell><a href="#">See more</a></TableCell>
-                        <TableCell>{element.quantity}</TableCell>
+                        <TableCell>{element.name ? element.name.substring(0, 10) + '.....' : ''}</TableCell>
                         <TableCell>{element.price}</TableCell>
-                        <TableCell>{element.rating}</TableCell>
-                        <TableCell>{element.itemCondition}</TableCell>
-                        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
-                        <TableCell><img src={DeatilIcon} alt="logo" className="actionIcon" /> <img src={EditImg} alt="logo" className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
+                        <TableCell>{element.soloPrice}</TableCell>
+                        <TableCell>{element.groupPrice}</TableCell>
+                        <TableCell>{element.unitSize}</TableCell>
+                        <TableCell>{element.category}</TableCell>
+                        <TableCell>{element.description && element.description.description ? element.description.description.substring(0, 9) + '.....' : ''}</TableCell>
+                        <TableCell>{element.images && element.images.length > 0 ? element.images[0] : ''}</TableCell>
+                        <TableCell>{element.trending}</TableCell>
+                        <TableCell>{element.inStock ? 'Yes' : 'No'}</TableCell>
+                        <TableCell><img src={DeatilIcon} alt="logo" onClick={() => { viewDetail(element.id) }} className="actionIcon" /> <img src={EditImg} alt="logo" onClick={() => { getItemById(element.id) }} className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -140,7 +172,7 @@ export default function Tables(props) {
                       onChangeRowsPerPage={handleChangeRowsPerPage}
                     /></Grid>
                   <Grid item xs={3} className="" >
-                    <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-end' }}>
                       <Link to="/app/manage/items/additem" style={{ textDecoration: 'none' }}>
                         <IconButton style={{ backgroundColor: '#e65a28', color: 'white' }}>
                           <AddIcon />
