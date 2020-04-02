@@ -22,14 +22,15 @@ import PageTitle from "../../components/PageTitle";
 const headCells = [
   { id: 'id', numeric: true, disablePadding: false, label: 'Id' },
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'sellerName', numeric: false, disablePadding: true, label: 'Seller Name' },
-  { id: 'category', numeric: false, disablePadding: true, label: 'Category' },
-  { id: 'description', numeric: false, disablePadding: true, label: 'Description' },
-  { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
-  { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
-  { id: 'rating', numeric: true, disablePadding: false, label: 'Rating' },
-  { id: 'condition', numeric: false, disablePadding: true, label: 'Condition' },
-  { id: 'transaction', numeric: false, disablePadding: true, label: 'Transaction' },
+  { id: 'price', numeric: true, disablePadding: true, label: 'Price' },
+  { id: 'soloPrice', numeric: true, disablePadding: true, label: 'Solo Price' },
+  { id: 'groupPrice', numeric: false, disablePadding: true, label: 'Group Price' },
+  { id: 'unitSize', numeric: false, disablePadding: true, label: 'Unit Size' },
+  { id: 'category', numeric: true, disablePadding: false, label: 'Category' },
+  { id: 'description', numeric: true, disablePadding: false, label: 'Description' },
+  { id: 'images', numeric: true, disablePadding: false, label: 'Images' },
+  { id: 'trending', numeric: false, disablePadding: true, label: 'Trending' },
+  { id: 'inStock', numeric: false, disablePadding: true, label: 'In Stock' },
   { id: 'actions', numeric: false, disablePadding: true, label: 'Actions' },
 ];
 
@@ -117,18 +118,19 @@ export default function Tables(props) {
                     {(rowsPerPage > 0
                       ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       : datatableData
-                    ).map((element) => (
-                      <TableRow className="tabelBody_row" >
+                    ).map((element, index) => (
+                      <TableRow key={index} className="tabelBody_row" >
                         <TableCell>{element.id}</TableCell>
-                        <TableCell>{element.name}</TableCell>
-                        <TableCell>{element.sellerName}</TableCell>
-                        <TableCell>{element.category}</TableCell>
-                        <TableCell><a href="#">See more</a></TableCell>
-                        <TableCell>{element.quantity}</TableCell>
+                        <TableCell>{element.name ? element.name.substring(0, 10) + '.....' : ''}</TableCell>
                         <TableCell>{element.price}</TableCell>
-                        <TableCell>{element.rating}</TableCell>
-                        <TableCell>{element.itemCondition}</TableCell>
-                        <TableCell><Button variant="outlined" className="success_btn" >Success</Button></TableCell>
+                        <TableCell>{element.soloPrice}</TableCell>
+                        <TableCell>{element.groupPrice}</TableCell>
+                        <TableCell>{element.unitSize}</TableCell>
+                        <TableCell>{element.category}</TableCell>
+                        <TableCell>{element.description && element.description.description ? element.description.description.substring(0, 9) + '.....' : ''}</TableCell>
+                        <TableCell>{element.images && element.images.length > 0 ? element.images[0] : ''}</TableCell>
+                        <TableCell>{element.trending}</TableCell>
+                        <TableCell>{element.inStock ? 'Yes' : 'No'}</TableCell>
                         <TableCell><img src={DeatilIcon} alt="logo" onClick={() => { viewDetail(element.id) }} className="actionIcon" /> <img src={EditImg} alt="logo" onClick={() => { getItemById(element.id) }} className="actionIcon" style={{ marginLeft: '5px' }} /> </TableCell>
                       </TableRow>
                     ))}

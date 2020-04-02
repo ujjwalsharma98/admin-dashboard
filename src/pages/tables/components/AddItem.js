@@ -6,7 +6,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-import PageTitle from "../../../components/PageTitle";
+import { Typography } from "../../../components/Wrappers";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../../Services"
+
 const Additem = props => {
     const stocks = ["No", "Yes"]
     const history = useHistory();
@@ -36,7 +40,7 @@ const Additem = props => {
     const [weight, setWeight] = useState("");
     const [disable, setDisabled] = useState("");
     const itemId = parseInt(props.match.params.id);
-    const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item/' + itemId;
+    const apiUrl = API_URL + 'api/v1/int-tool/item/' + itemId;
     if (itemId > 0 && props.match.isExact) {
         const index = props.match.url.indexOf("/items/detail");
         if (index > 0) {
@@ -73,7 +77,7 @@ const Additem = props => {
                     setImages(res.images.toString());
                 }
             }).catch(error => {
-                alert(error);
+                toast.error("Unable to fetch item detail. Please try again.");
             });
     }
 
@@ -108,14 +112,14 @@ const Additem = props => {
             description: descriptionObj,
             images: imagesUrl,
         }
-        const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item'
-        axios.post(apiUrl, payload)
+        axios.post(API_URL + 'api/v1/int-tool/item', payload)
             .then(function (response) {
                 if (response) {
-                    history.push("/app/manage");
+                    toast.success("Saved item successfully!");
+                    setTimeout(function () { history.push("/app/manage/items"); }, 3000);
                 }
             }).catch(error => {
-                alert(error);
+                toast.error("Unable to save item. Please try again.");
             });
     }
 
@@ -125,21 +129,22 @@ const Additem = props => {
                 <Link to="/app/manage/items" style={{ color: '#e65a28', position: 'absolute' }} >
                     <ArrowBackIosIcon />
                 </Link>
-                <Grid container  >
-                    <Grid item xs={12} style={{ paddingLeft: '20px' }}>
-                        <PageTitle title="Add new item" />
+                <Grid container style={{ marginBottom: '30px', }}>
+                    <Grid item xs={6} style={{ paddingLeft: '20px' }}>
+                        <Typography className="main_heading" variant="h1" size="sm">
+                            {
+                                id > 0 && <sapn>Update Item</sapn>
+                            }
+                            {
+                                !id && <sapn>Add Item</sapn>
+                            }
+                        </Typography>
                     </Grid>
                 </Grid>
             </div>
-            <TableContainer className="tabelContainer" style={{ padding: "50px 20px" }} >
+            <TableContainer className="tabelContainer" style={{ padding: "25px 10px" }} >
                 <form onSubmit={() => handleSubmit()}>
-                    <Grid container>
-                        <Grid item xs={12} style={{ paddingLeft: '10px' }}>
-                            <button disabled={disable} className="btn btn-lg btn-primary" type="submit">
-                                Save
-                            </button>
-                        </Grid>
-                    </Grid>
+
                     <Grid container className="add_itemContainer" >
                         <Grid item xs={4} className="add_fieldCol" hidden>
                             <TextField
@@ -342,23 +347,7 @@ const Additem = props => {
                         </Grid>
                     </Grid>
                     <Grid container className="add_itemContainer" >
-                        <Grid item xs={12} className="add_fieldCol">
-                            <TextField
-                                disabled={disable}
-                                className="add_textField"
-                                id="images"
-                                value={images}
-                                placeholder="Images"
-                                rows="4"
-                                multiline
-                                required
-                                variant="outlined"
-                                onChange={e => setImages(e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container className="add_itemContainer" >
-                        <Grid item xs={12} className="add_fieldCol">
+                        <Grid item xs={6} className="add_fieldCol">
                             <TextField
                                 disabled={disable}
                                 className="add_textField"
@@ -370,6 +359,20 @@ const Additem = props => {
                                 required
                                 variant="outlined"
                                 onChange={e => setDescription(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={6} className="add_fieldCol">
+                            <TextField
+                                disabled={disable}
+                                className="add_textField"
+                                id="images"
+                                value={images}
+                                placeholder="Images"
+                                rows="5"
+                                multiline
+                                required
+                                variant="outlined"
+                                onChange={e => setImages(e.target.value)}
                             />
                         </Grid>
                     </Grid>
@@ -438,6 +441,19 @@ const Additem = props => {
                                     <option value={stocks[1]}>{stocks[1]}</option>
                                 </select>
                             </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={12} style={{ paddingLeft: '10px' }}>
+                            <button disabled={disable} className="btn btn-lg btn-primary" type="submit">
+                                {
+                                    id > 0 && <span>Update</span>
+                                }
+                                {
+                                    !id && <span>Add</span>
+                                }
+                            </button>
+                            <ToastContainer autoClose={3000} />
                         </Grid>
                     </Grid>
                 </form>
