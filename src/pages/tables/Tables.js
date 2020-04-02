@@ -20,9 +20,10 @@ import { API_URL } from "../../Services"
 import PageTitle from "../../components/PageTitle";
 
 const headCells = [
+  { id: 'id', numeric: true, disablePadding: false, label: 'Id' },
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'price', numeric: false, disablePadding: true, label: 'Price' },
-  { id: 'soloPrice', numeric: false, disablePadding: true, label: 'Solo Price' },
+  { id: 'price', numeric: true, disablePadding: true, label: 'Price' },
+  { id: 'soloPrice', numeric: true, disablePadding: true, label: 'Solo Price' },
   { id: 'groupPrice', numeric: false, disablePadding: true, label: 'Group Price' },
   { id: 'unitSize', numeric: false, disablePadding: true, label: 'Unit Size' },
   { id: 'category', numeric: true, disablePadding: false, label: 'Category' },
@@ -119,6 +120,7 @@ export default function Tables(props) {
                       : datatableData
                     ).map((element, index) => (
                       <TableRow key={index} className="tabelBody_row" >
+                        <TableCell>{element.id}</TableCell>
                         <TableCell>{element.name ? element.name.substring(0, 10) + '.....' : ''}</TableCell>
                         <TableCell>{element.price}</TableCell>
                         <TableCell>{element.soloPrice}</TableCell>

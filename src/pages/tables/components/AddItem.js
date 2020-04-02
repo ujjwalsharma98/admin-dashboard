@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { Typography } from "../../../components/Wrappers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../../Services"
 
 const Additem = props => {
     const stocks = ["No", "Yes"]
@@ -39,7 +40,7 @@ const Additem = props => {
     const [weight, setWeight] = useState("");
     const [disable, setDisabled] = useState("");
     const itemId = parseInt(props.match.params.id);
-    const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item/' + itemId;
+    const apiUrl = API_URL + 'api/v1/int-tool/item/' + itemId;
     if (itemId > 0 && props.match.isExact) {
         const index = props.match.url.indexOf("/items/detail");
         if (index > 0) {
@@ -111,8 +112,7 @@ const Additem = props => {
             description: descriptionObj,
             images: imagesUrl,
         }
-        const apiUrl = 'http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/api/v1/int-tool/item'
-        axios.post(apiUrl, payload)
+        axios.post(API_URL + 'api/v1/int-tool/item', payload)
             .then(function (response) {
                 if (response) {
                     toast.success("Saved item successfully!");
