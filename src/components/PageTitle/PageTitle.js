@@ -26,7 +26,7 @@ export default function PageTitle(props) {
   return (
     <div >
       <Grid container style={{ marginBottom: '30px', }}>
-        <Grid item xs={6}>
+        <Grid item xs={6} style={{display:'flex', alignItems:'center'}}>
           <Typography className="main_heading" variant="h1" size="sm">
             {props.title}
           </Typography>
@@ -45,7 +45,7 @@ export default function PageTitle(props) {
 
               endAdornment: (
                 <InputAdornment>
-                  <IconButton className="srch_icon" style={{ backgroundColor: '#f4f5f7' }} >
+                  <IconButton className="srch_icon head_icon" style={{ backgroundColor: '#f4f5f7' }} >
                     {/* <img src={SearchcIcon} alt="logo" className="actionIcon"/> */}
                     <SearchIcon />
                   </IconButton>

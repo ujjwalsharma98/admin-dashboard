@@ -54,6 +54,8 @@ import ReportsImg from '../../Icons/Reports_Normal.png';
 // import UserImg  from '../../Icons/Users_Normal.png';
 import DealsImg from '../../Icons/Deals_Normal.png';
 import transitions from "@material-ui/core/styles/transitions";
+import LeftArrow from '../../Icons/Left arrow_white.png';
+import RightArrow from '../../Icons/Right arrow_white.png';
 
 function Layout(props) {
   // global
@@ -138,7 +140,7 @@ function Layout(props) {
               </div>
             </div>
           </div>
-          <div id="padding_side" className="sidebar_scroll" style={{ width: '20px' }}>
+          <div id="padding_side" className="sidebar_scroll" style={{ width: '20px',transition: 'width 300ms cubic-bezier(0.2, 0, 0, 1) 0s' }}>
             <div className="scroll_sidebar">
 
               <div className={props.history.location && props.history.location.pathname === '/app/manage/items' ? "this_address" : "menu_list"}
@@ -190,12 +192,12 @@ function Layout(props) {
               {showSidebarTwo ? <ChildSidebar/> : <Bar/>} */}
           <div className="scroll_btn">
             <div className="icon_clik" onClick={() => { toggle() }}>{showSidebarTwo === false ?
-              <ArrowForward id="icon_rotate" style={{ color: 'white', transform: 'rotate(180deg)', height: '15px', width: '15px' }} /> :
-              <ArrowBack style={{ color: 'white', transform: 'rotate(180deg)', height: '15px', width: '15px' }}></ArrowBack>}
+              <img src={LeftArrow}   style={{ color:'#ffffff', height: '13px', width: '13px' }} /> :
+              <img src={RightArrow} style={{ color:'#ffffff', height: '13px', width: '13px' }}/>}
             </div></div>
         </div>
 
-        <div id="content_side" style={{ paddingLeft: '20px', marginLeft: '90px', transitions: ' paddingLeft 300ms cubic-bezier(0.2, 0, 0, 1) 0s' }}
+        <div id="content_side" style={{ paddingLeft: '20px',     transition: 'width 300ms cubic-bezier(0.2, 0, 0, 1) 0s', marginLeft: '90px', transitions: ' paddingLeft 300ms cubic-bezier(0.2, 0, 0, 1) 0s' }}
           className={classnames(classes.content, {
             [classes.contentShift]: layoutState.isSidebarOpened,
           })}
