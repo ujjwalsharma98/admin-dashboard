@@ -14,6 +14,7 @@ import EditImg from './Edit_Icon.png';
 import DeatilIcon from './View_Details_Icon.png';
 import AddIcon from '@material-ui/icons/Add';
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 import { API_URL } from "../../Services"
 // components
@@ -56,7 +57,7 @@ export default function Tables(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
     let pageLength = parseInt(event.target.value, 10)
-    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=${sortBy},${sortOrder}`)
+    setUrl(`${API_URL}/api/v1/int-tool/item?page=0&size=${pageLength}&sort=${sortOrder},${sortOrder}`)
     fetchData(url);
   };
 
@@ -71,6 +72,7 @@ export default function Tables(props) {
   }
 
   const fetchData = async () => {
+    debugger;
     setIsLoading(true);
     const response = await fetch(url);
     const result = await response.json();
@@ -78,8 +80,26 @@ export default function Tables(props) {
     setIsLoading(false);
   };
 
+  const aa = async () => {
+    setIsLoading(true);
+    const value = 'M'
+    const apiUrl = API_URL + `api/v1/item/search?keyword=${value}&sort=${sortBy},${sortOrder}&page=0&size=15`;
+    axios.get(apiUrl)
+      .then(function (response) {
+        debugger;
+      }).catch(error => {
+        debugger;
+      });
+  };
+
   const getItemById = (id) => {
     history.push("/app/manage/items/update/" + id);
+  }
+
+  const searchItems = value => {
+    if (value) {
+      aa();
+    }
   }
 
   const viewDetail = (id) => {
@@ -91,7 +111,7 @@ export default function Tables(props) {
   }, [url]);
   return (
     <>
-      <PageTitle title="Items" />
+      <PageTitle searchItems={searchItems} title="Items" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           {isLoading ? (
