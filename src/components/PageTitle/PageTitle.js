@@ -7,7 +7,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchcIcon from "@material-ui/icons/Search";
 import SearchIcon from '@material-ui/icons/Search';
 import {
- 
+
   TextField,
 
 } from "@material-ui/core";
@@ -25,35 +25,35 @@ export default function PageTitle(props) {
   return (
     <div >
       <Grid container style={{marginBottom:'30px', }}>
-      <Grid item xs={6}>
-      <Typography className="main_heading" variant="h1" size="sm">
-        {props.title}
-      </Typography>
-      </Grid>
-      <Grid item xs={5}>
-      {/* <InputBase
+        <Grid item xs={6}>
+          <Typography className="main_heading" variant="h1" size="sm">
+            {props.title}
+          </Typography>
+        </Grid>
+        <Grid item xs={5}>
+          {/* <InputBase
         className="seach_btn"
         placeholder="Search by"><SearchIcon /></InputBase> */}
-        <TextField
-  placeholder="Search By"
-  
-  className="seach_btn"
-  InputProps={{
-    
-      disableUnderline: true,
-    
-    endAdornment: (
-      <InputAdornment>
-        <IconButton className="srch_icon" style={{backgroundColor:'#f4f5f7'}} >
-        {/* <img src={SearchcIcon} alt="logo" className="actionIcon"/> */}
-        <SearchIcon/>
-        </IconButton>
-      </InputAdornment>
-    )
-  }}
-/>
-        
-        
+          <TextField
+            placeholder="Search By"
+           
+            className="seach_btn"
+            InputProps={{ 
+
+              disableUnderline: true,
+
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton className="srch_icon" style={{backgroundColor:'#f4f5f7'}} >
+                    {/* <img src={SearchcIcon} alt="logo" className="actionIcon"/> */}
+                    <SearchIcon/>
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+
+
         </Grid>
         <Grid item xs={1}></Grid>
       </Grid>
