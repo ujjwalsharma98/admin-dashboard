@@ -1,1 +1,1 @@
-export const API_URL = "http://ec2-3-7-0-164.ap-south-1.compute.amazonaws.com:8080/"
+export const API_URL = "http://your-url-here/"

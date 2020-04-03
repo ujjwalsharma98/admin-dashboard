@@ -104,7 +104,7 @@ body{
 .toogle_btn {
     width: 35px!important;
     height: 35px!important;
-    background-color: #e65a28!important;
+    background-color: blue!important;
     top: 117px!important;
     border-radius: 100%!important;
     left: -5px;
@@ -136,7 +136,7 @@ body{
     height: 100vh;
 }
 .logo_col{
-    background-color: #ffdc3c;
+    background-color: blue;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -217,7 +217,7 @@ body{
     position: absolute;
 }
 .sidebar_one{
-    background-color: #e65a28;
+    background-color: blue;
     width: 90px;
     padding: 0 8px;
 }
@@ -336,7 +336,7 @@ body{
 }
 /* fixed_sidebar */
 .fixed_sidebar {
-    background-color: #e65a28;
+    background-color: blue;
     will-change: width;
     padding: 0 8px;
     transition: width 300ms cubic-bezier(0.2, 0, 0, 1) 0s;
@@ -411,7 +411,7 @@ body{
     display: flex;
     height: 25px;
     border-radius: 50px;
-    background-color: #e65a28;
+    background-color: blue;
     justify-content: center;    
     text-align: center;
     cursor: pointer;
@@ -426,9 +426,9 @@ body{
     background-color: #f4f5f7!important;
 }
 .head_icon {
-    background-color: #ffdc3c!important;
+    background-color: blue!important;
 }
 
 .tabelHead_row th  {
-    background-color: #ffdc3c!important;
+    background-color: blue!important;
 }

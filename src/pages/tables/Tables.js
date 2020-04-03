@@ -72,7 +72,6 @@ export default function Tables(props) {
   }
 
   const fetchData = async () => {
-    debugger;
     setIsLoading(true);
     const response = await fetch(url);
     const result = await response.json();
@@ -174,7 +173,7 @@ export default function Tables(props) {
                   <Grid item xs={3} className="" >
                     <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-end' }}>
                       <Link to="/app/manage/items/additem" style={{ textDecoration: 'none' }}>
-                        <IconButton style={{ backgroundColor: '#e65a28', color: 'white' }}>
+                        <IconButton style={{ backgroundColor: 'blue', color: 'white' }}>
                           <AddIcon />
                         </IconButton>
                       </Link><Typography>Add Item</Typography>

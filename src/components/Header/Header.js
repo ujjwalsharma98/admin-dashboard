@@ -37,7 +37,6 @@ import useStyles from "./styles";
 import { Badge, Typography } from "../Wrappers/Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
-import logo from './kite_logo.png'; // with import
 
 // context
 import {
@@ -70,7 +69,7 @@ export default function Header(props) {
       <Grid container spacing={3} style={{alignSelf:'center'}}>
         <Grid item xs={6}>
         <Toolbar className={classes.toolbar}>
-          <img src={logo} alt="logo" className="menuLogo"  />
+         
         </Toolbar>
       </Grid>
         <Grid item xs={6} style={{alignSelf:'center',  }}>

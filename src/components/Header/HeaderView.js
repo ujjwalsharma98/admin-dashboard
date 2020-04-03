@@ -103,7 +103,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           />
         )}
       </IconButton>
-      <Typography variant="h6" weight="medium" className={classes.logotype}>React KitaBeli</Typography>
+      <Typography variant="h6" weight="medium" className={classes.logotype}>Demo</Typography>
       <div className={classes.grow} />
       <div
         className={classNames(classes.search, {
@@ -253,9 +253,9 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             className={classes.profileMenuLink}
             component="a"
             color="primary"
-            href="https://KitaBeli.com"
+            href="#"
           >
-            KitaBeli.com
+            Demo
           </Typography>
         </div>
         <MenuItem
