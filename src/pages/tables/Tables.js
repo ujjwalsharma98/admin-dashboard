@@ -176,7 +176,7 @@ export default function Tables(props) {
                   <Grid item xs={3} className="" >
                     <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-end' }}>
                       <Link to="/app/manage/items/additem" style={{ textDecoration: 'none' }}>
-                        <IconButton style={{ backgroundColor: 'blue', color: 'white' }}>
+                        <IconButton style={{ backgroundColor: 'cadetblue', color: 'white' }}>
                           <AddIcon />
                         </IconButton>
                       </Link><Typography>Add Item</Typography>
