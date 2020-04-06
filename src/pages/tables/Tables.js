@@ -15,6 +15,7 @@ import DeatilIcon from './View_Details_Icon.png';
 import AddIcon from '@material-ui/icons/Add';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import Dummydata from './components/data.json'
 
 import { API_URL } from "../../Services"
 // components
@@ -37,6 +38,7 @@ const headCells = [
 
 export default function Tables(props) {
   const history = useHistory();
+  const { payload } = Dummydata;
   const [datatableData, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = React.useState(0);
@@ -105,9 +107,10 @@ export default function Tables(props) {
     history.push("/app/manage/items/detail/" + id);
   }
 
-  useEffect(() => {
-    fetchData(url);
-  }, [url]);
+  // useEffect(() => {
+  //   fetchData(url);
+  // }, [url]);
+
   return (
     <>
       <PageTitle searchItems={searchItems} title="Items" />
@@ -135,8 +138,8 @@ export default function Tables(props) {
                   </TableHead>
                   <TableBody className="tabelBody">
                     {(rowsPerPage > 0
-                      ? datatableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      : datatableData
+                      ? payload.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : payload
                     ).map((element, index) => (
                       <TableRow key={index} className="tabelBody_row" >
                         <TableCell>{element.id}</TableCell>
