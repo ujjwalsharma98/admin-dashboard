@@ -52,7 +52,7 @@ const Sidebar = props => {
             <div className="top_part">
               <div className="sidebar_one_menu main_top">
                 <div className="menu_list" onClick={() => {
-                  props.history.replace('/app/manage/items')
+                  props.history.replace('/app/manage/dashboard')
                 }}>
                   <div classnames="menu_list_item">
                     <img src={ManageImg} alt="sidebar icon" width="30" height="30" className="side_img" />
@@ -93,9 +93,9 @@ const Sidebar = props => {
           <div id="padding_side" className="sidebar_scroll" style={{ width: '20px',transition: 'width 300ms cubic-bezier(0.2, 0, 0, 1) 0s' }}>
             <div className="scroll_sidebar">
 
-              <div className={props.history.location && props.history.location.pathname === '/app/manage/items' ? "this_address" : "menu_list"}
+              <div className={props.history.location && props.history.location.pathname === '/app/manage/dashboard' ? "this_address" : "menu_list"}
                 onClick={() => {
-                  props.history.replace('/app/manage/items')
+                  props.history.replace('/app/manage/dashboard')
                 }}
               >
                 <div className="scroll_item">
@@ -104,9 +104,9 @@ const Sidebar = props => {
                 <Typography className="scroll_item_text">Dashboard</Typography>
               </div>
 
-              <div className={props.history.location && props.history.location.pathname === '/app/manage/order' ? "this_address" : "menu_list"}
+              <div className={props.history.location && props.history.location.pathname === '/app/manage/items' ? "this_address" : "menu_list"}
                 onClick={() => {
-                  props.history.replace('/app/manage/order')
+                  props.history.replace('/app/manage/items')
                 }}
               >
                 <div className="scroll_item">

@@ -43,8 +43,8 @@ function Layout(props) {
         >
           <div className={classes.fakeToolbar} />
           <Switch>
-            <Route path="/app/manage/items" component={Dashboard} exact />
-            <Route path="/app/manage/order" component={Tables} exact />
+            <Route path="/app/manage/dashboard" component={Dashboard} exact />
+            <Route path="/app/manage/items" component={Tables} exact />
             <Route path="/app/manage/users" component={Users} exact />
             <Route path="/app/manage/deals" component={Deals} exact />
             <Route path="/app/manage/items/additem" component={Additem} exact />
@@ -58,7 +58,7 @@ function Layout(props) {
             <Route path="/app/ui/charts" component={Charts} />
             <Redirect
               from="/"
-              to="/app/manage/items"
+              to="/app/manage/dashboard"
             />
           </Switch>
         </div>
