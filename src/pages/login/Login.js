@@ -24,6 +24,7 @@ import useStyles from "./styles";
 // logo
 import logo from "./logo.svg";
 import google from "../../images/google.svg";
+import LoginLogo  from './logo-1.svg';
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
@@ -44,11 +45,11 @@ function Login(props) {
 
   return (
     <Grid container className="login_container" >
-     <Grid item xs={6} className="logo_col">
+      <Grid item xs={6} className="logo_col">
+        <img src={LoginLogo} alt="logo" className="login_logo" />  
+      </Grid>
         
-        </Grid>
-        
-        <Grid item xs={6}  className="form_col">
+      <Grid item xs={6}  className="form_col">
       <div className={classes.formContainer}>
         <div className={classes.form}>
         <Typography className="signin_text">Sign IN</Typography>
