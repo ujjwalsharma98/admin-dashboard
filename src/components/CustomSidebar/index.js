@@ -101,7 +101,7 @@ const Sidebar = props => {
                 <div className="scroll_item">
                   <img src={ItemImg} alt="sidebar icon" width="30" height="30" className="side_img" />
                 </div>
-                <Typography className="scroll_item_text">Items</Typography>
+                <Typography className="scroll_item_text">Dashboard</Typography>
               </div>
 
               <div className={props.history.location && props.history.location.pathname === '/app/manage/order' ? "this_address" : "menu_list"}
@@ -112,7 +112,7 @@ const Sidebar = props => {
                 <div className="scroll_item">
                   <img src={OrderImg} alt="sidebar icon" width="30" height="30" className="side_img" />
                 </div>
-                <Typography className="scroll_item_text">Order</Typography>
+                <Typography className="scroll_item_text">Items</Typography>
               </div>
 
               <div className={props.history.location && props.history.location.pathname === '/app/manage/users' ? "this_address" : "menu_list"}
