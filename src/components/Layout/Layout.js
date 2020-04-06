@@ -19,6 +19,8 @@ import Dashboard from "../../pages/dashboard";
 import Tables from "../../pages/tables";
 import Additem from "../../pages/tables/components/AddItem";
 import Charts from "../../pages/charts";
+import Users from "../../pages/users";
+import Deals from "../../pages/deals";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -41,8 +43,10 @@ function Layout(props) {
         >
           <div className={classes.fakeToolbar} />
           <Switch>
-            <Route path="/app/manage/items" component={Tables} exact />
-            <Route path="/app/manage/order" component={Dashboard} exact />
+            <Route path="/app/manage/items" component={Dashboard} exact />
+            <Route path="/app/manage/order" component={Tables} exact />
+            <Route path="/app/manage/users" component={Users} exact />
+            <Route path="/app/manage/deals" component={Deals} exact />
             <Route path="/app/manage/items/additem" component={Additem} exact />
             <Route path="/app/manage/items/update/:id" component={Additem} exact />
             <Route path="/app/manage/items/detail/:id" component={Additem} exact />
