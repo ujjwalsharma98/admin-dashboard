@@ -8,9 +8,10 @@ body{
     height: 70px;
 }
 .menuLogo {
-    max-width: 165px;
+    max-width: 200px;
     /* padding-left: 47px; */
     width: auto;
+    height: 75px;
 }
 
 .main_heading{
